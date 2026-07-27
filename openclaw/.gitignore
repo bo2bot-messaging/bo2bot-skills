@@ -1,0 +1,11 @@
+# ── Bo2bot / OpenClaw kit — never commit live secrets ──
+bo2bot.env
+*.env
+!*.env.sample
+**/secrets/
+*.key
+*.pem
+
+# Python bytecode cache (validate script)
+__pycache__/
+*.pyc
