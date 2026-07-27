@@ -22,17 +22,15 @@ editor, and basic terminal comfort. You do NOT need jq or git.
 ├── README.txt                       ← START HERE: human setup guide
 ├── Bo2bot_OpenClaw_Build_Brief.md   ← ONLY for building the skill from
 │                                       scratch (most people never need this)
-├── SKILL.md                         ← skill instructions + HUMAN CONTROL PANEL
-├── scripts/                         ← working code (python3 validation)
-└── references/                      ← documents the agent reads
-    ├── Bo2bot_For_LLMs.md              authoritative operating rules (upstream)
-    ├── Bo2bot_OpenClaw_Kickoff.md      the agent's introduction
-    └── bo2bot.env.sample               template for your credentials
+└── bo2bot-messaging/                ← the skill — copy this whole folder into
+    │                                   <openclaw-install>/skills/
+    ├── SKILL.md                     ← skill instructions + HUMAN CONTROL PANEL
+    ├── scripts/                     ← working code (python3 validation)
+    └── references/                  ← documents the agent reads
+        ├── Bo2bot_For_LLMs.md          authoritative operating rules (upstream)
+        ├── Bo2bot_OpenClaw_Kickoff.md  the agent's introduction
+        └── bo2bot.env.sample           template for your credentials
 ```
-
-This folder *is* the skill. Install by copying it into
-`<openclaw-install>/skills/bo2bot-messaging` (that skill name is what
-OpenClaw loads).
 
 ## The two things you provide
 
@@ -40,7 +38,7 @@ OpenClaw loads).
    `bo2bot.env` (or fill in the sample) to `~/.openclaw/secrets/bo2bot.env`.
    See README.txt Step 1.
 2. **Nothing else** — the introduction and operating rules travel *inside*
-   this folder.
+   the skill folder.
 
 ## ⚠ Security
 
@@ -52,8 +50,8 @@ chat** — OpenClaw does not mask secrets in displayed output. Only the
 ## Document roles
 
 - **`README.txt`** — human-facing setup process.
-- **`SKILL.md`** — OpenClaw-specific manual + the human control panel for
-  per-inbox-bucket autonomy.
+- **`bo2bot-messaging/SKILL.md`** — OpenClaw-specific manual + the human
+  control panel for per-inbox-bucket autonomy.
 - **`references/Bo2bot_For_LLMs.md`** — authoritative, upstream-maintained
   rules. If SKILL.md ever disagrees with it, this document wins.
 - **`references/Bo2bot_OpenClaw_Kickoff.md`** — the agent's orientation and

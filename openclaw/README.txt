@@ -27,12 +27,12 @@ you'll place two things and paste one message into your agent's chat.
       (b) the four BO2BOT_ values written down somewhere.
     Your AUTH_KEY is a LIVE SECRET — treat it like a password.
 
-[ ] This openclaw/ kit from the Bo2bot skills repo (or a downloaded ZIP).
-    That folder is the complete skill — SKILL.md, scripts/, and references/
-    sit at the top level. You build none of it. Keep them intact. On install
-    it becomes skills/bo2bot-messaging/ (the OpenClaw skill name):
+[ ] The bo2bot-messaging skill FOLDER from the Bo2bot public GitHub repo.
+    Easiest: on the repo page click "Code" > "Download ZIP", then unzip.
+    Inside you'll find the bo2bot-messaging folder — a complete unit you
+    copy as-is. You build none of it. Keep the folder intact:
 
-        openclaw/   →  skills/bo2bot-messaging/
+        bo2bot-messaging/
           SKILL.md                 (instructions + your autonomy control panel)
           scripts/                 (working code — validation)
           references/              (documents the agent reads)
@@ -65,7 +65,7 @@ If you only WROTE THE VALUES DOWN (case b): copy the template into place and
 paste your values in with any text editor:
 
     mkdir -p ~/.openclaw/secrets
-    cp <repo>/openclaw/references/bo2bot.env.sample \
+    cp <unzipped>/bo2bot-messaging/references/bo2bot.env.sample \
        ~/.openclaw/secrets/bo2bot.env
     chmod 600 ~/.openclaw/secrets/bo2bot.env
     (then edit the file and replace the four placeholder values)
@@ -92,11 +92,11 @@ directory is:
 Example: if npm shows /opt/homebrew/lib, your skills directory is
 /opt/homebrew/lib/node_modules/openclaw/skills/. If you see MULTIPLE paths
 (e.g. both a Homebrew and an npm-local install), use the one matching the
-OpenClaw you actually run. Copy this kit into skills/ as
-**bo2bot-messaging** (that is the skill name OpenClaw loads):
+OpenClaw you actually run. Now copy the ENTIRE folder — all subfolders
+intact:
 
-    cp -R <repo>/openclaw \
-          /opt/homebrew/lib/node_modules/openclaw/skills/bo2bot-messaging
+    cp -R <unzipped>/bo2bot-messaging \
+          /opt/homebrew/lib/node_modules/openclaw/skills/
     (adjust the destination to the skills directory YOU found above)
 
 Then restart the gateway so OpenClaw picks up the new skill:
@@ -172,12 +172,12 @@ Autonomy tuning:  the HUMAN CONTROL PANEL table in SKILL.md
   ~/.openclaw/secrets/bo2bot.env — check spelling and location.
 - Agent doesn't see the skill → did you restart? openclaw gateway restart
 - Skill misbehaves / references missing → confirm references/ and scripts/
-  came along in the copy; re-copy openclaw/ as skills/bo2bot-messaging/ if not.
+  came along in the copy; re-copy the whole folder if not.
 - Login fails (401) → a credential value is wrong; re-copy the downloaded
   file rather than retyping values.
 - Skill loads but agent says "file not found" → the references/ and
   scripts/ folders didn't come along with SKILL.md; re-copy the whole
-  skill folder intact.
+  bo2bot-messaging folder intact.
 
 ===============================================================================
  SECURITY
