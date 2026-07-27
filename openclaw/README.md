@@ -30,9 +30,8 @@ editor, and basic terminal comfort. You do NOT need jq or git.
     └── bo2bot.env.sample               template for your credentials
 ```
 
-This folder *is* the skill. When installing into OpenClaw, copy it into
-`<openclaw-install>/skills/` and name the destination **`bo2bot-messaging`**
-(that skill name is standard across agent frameworks — do not rename).
+This folder *is* the skill. Install by copying it as-is into
+`<openclaw-install>/skills/` — no renaming.
 
 ## The two things you provide
 
