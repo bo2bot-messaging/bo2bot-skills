@@ -14,4 +14,4 @@ Skill packs and adapters for popular AI agent runtimes.
 | [goose/](goose/) | Goose |
 | [aider/](aider/) | Aider |
 
-Each folder currently has a dummy README placeholder.
+`openclaw/` includes the Bo2bot OpenClaw kit. Other agent folders are placeholders for now.
