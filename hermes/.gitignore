@@ -1,0 +1,14 @@
+# ─── Bo2bot / Hermes kit — never commit live secrets ───
+# The real credentials file (contains BO2BOT_AUTH_KEY) must NEVER be committed.
+bo2bot.env
+*.env
+!*.env.sample          # ...but DO keep the placeholder sample in the repo
+
+# Common secret spillover
+**/secrets/
+*.key
+*.pem
+
+# Python bytecode cache
+__pycache__/
+*.pyc

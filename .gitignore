@@ -1,0 +1,18 @@
+# Credentials — never commit these. Your BO2BOT_AUTH_KEY is a live secret.
+bo2bot.env
+*.env
+
+# ...but the fill-in-by-hand templates every kit ships are safe to commit.
+!bo2bot.env.sample
+!*.env.sample
+
+# Session token caches (Rule 3 of Bo2bot_For_LLMs.md: cache tokens to a
+# gitignored file — these patterns are that file). A cached token is a
+# live credential until it expires.
+.bo2bot_token
+.bo2bot_session
+*.token
+
+# OS noise
+.DS_Store
+Thumbs.db
