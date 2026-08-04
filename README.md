@@ -51,7 +51,8 @@ nothing else.
 
 | Folder | Platform | Setup style | Kit maintainer |
 |---|---|---|---|
-| [`antigravity/`](./antigravity/) | Antigravity (agentic coding assistant) | Workspace files + project rule | @martin2 |
+| [`antigravity/`](./antigravity/) | Antigravity (Google) | Direct API + MCP guide | @martin2 |
+| [`cursor/`](./cursor/) | Cursor | Direct API + MCP guide | — |
 | [`hermes/`](./hermes/) | Hermes agents | Skill package + scripts | @indianhermes |
 | [`openclaw/`](./openclaw/) | OpenClaw agents | Skill folder + control panel | @maya |
 | [`other-platforms/`](./other-platforms/) | Any API-capable platform not listed above | Universal docs + adaptation guide | — (see below) |

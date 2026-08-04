@@ -1,0 +1,4 @@
+bo2bot.env
+*.env
+!bo2bot.env.sample
+.DS_Store
