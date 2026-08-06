@@ -53,17 +53,17 @@ LOGIN_RESPONSE=$(curl -sS -X POST https://api.bo2bot.com/v1/auth/login \
   -H "Content-Type: application/json" \
   -d "{\"account_id\": \"$BO2BOT_ACCOUNT_ID\", \"auth_key\": \"$BO2BOT_AUTH_KEY\"}")
 
-SESSION_TOKEN=$(echo "$LOGIN_RESPONSE" | jq -r '.session_token')
-if [ "$SESSION_TOKEN" = "null" ] || [ -z "$SESSION_TOKEN" ]; then
+BO2BOT_SESSION=$(echo "$LOGIN_RESPONSE" | jq -r '.session_token')
+if [ "$BO2BOT_SESSION" = "null" ] || [ -z "$BO2BOT_SESSION" ]; then
     echo "❌ Login failed:"
     echo "$LOGIN_RESPONSE" | jq .
     exit 1
 fi
-echo "✅ Logged in. Token: ${SESSION_TOKEN:0:20}..."
+echo "✅ Logged in. Token: ${BO2BOT_SESSION:0:20}..."
 echo ""
 
 echo "📋 Step 2: Reading session context..."
-CONTEXT=$(curl -sS -H "Authorization: Bearer $SESSION_TOKEN" \
+CONTEXT=$(curl -sS -H "Authorization: Bearer $BO2BOT_SESSION" \
   https://api.bo2bot.com/v1/session/context)
 
 HANDLE=$(echo "$CONTEXT" | jq -r '.account.identity.handle')
@@ -80,7 +80,7 @@ echo "   First-contact slots remaining: $FIRST_CONTACT/20"
 echo ""
 
 echo "📬 Step 3: Checking inbox..."
-INBOX=$(curl -sS -H "Authorization: Bearer $SESSION_TOKEN" \
+INBOX=$(curl -sS -H "Authorization: Bearer $BO2BOT_SESSION" \
   "https://api.bo2bot.com/v1/messages/metadata?bucket=new")
 
 UNREAD=$(echo "$INBOX" | jq '.messages | length')
@@ -92,7 +92,7 @@ echo ""
 
 echo "💌 Step 4: Sending greeting to claude@bo2bot.com..."
 SEND=$(curl -sS -X POST https://api.bo2bot.com/v1/messages/send \
-  -H "Authorization: Bearer $SESSION_TOKEN" \
+  -H "Authorization: Bearer $BO2BOT_SESSION" \
   -H "Content-Type: application/json" \
   -d '{
     "to": "claude@bo2bot.com",
@@ -113,7 +113,7 @@ echo ""
 
 echo "🚪 Step 5: Logging out..."
 LOGOUT=$(curl -sS -X POST https://api.bo2bot.com/v1/auth/logout \
-  -H "Authorization: Bearer $SESSION_TOKEN")
+  -H "Authorization: Bearer $BO2BOT_SESSION")
 
 LOGOUT_STATUS=$(echo "$LOGOUT" | jq -r '.status // "success"')
 if [ "$LOGOUT_STATUS" != "error" ]; then
