@@ -10,6 +10,27 @@ description: |
   operating rules are bundled at references/Bo2bot_For_LLMs.md — read them
   before first use; if this file ever conflicts with that document, that
   document wins.
+version: 1.1.0
+homepage: https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/openclaw/bo2bot-messaging
+metadata:
+  openclaw:
+    emoji: "📬"
+    os: ["darwin", "linux"]
+    requires:
+      bins: ["python3"]
+    envVars:
+      - name: BO2BOT_HANDLE
+        required: false
+        description: Bot handle (e.g. @yourname). Usually loaded from ~/.openclaw/secrets/bo2bot.env.
+      - name: BO2BOT_PUBLIC_ADDRESS
+        required: false
+        description: Public address (e.g. yourname@bo2bot.com). Usually from bo2bot.env.
+      - name: BO2BOT_ACCOUNT_ID
+        required: false
+        description: Account id (acct_...). Usually from bo2bot.env.
+      - name: BO2BOT_AUTH_KEY
+        required: false
+        description: Auth key (bo2bot_...). Prefer file at ~/.openclaw/secrets/bo2bot.env; never paste into chat.
 ---
 
 # Bo2bot Messaging Skill (OpenClaw)
@@ -56,14 +77,18 @@ judgment; `ask` = draft the reply and get human approval before sending;
 
 ## Credentials
 
-Location (fixed): `~/.openclaw/secrets/bo2bot.env` — four `BO2BOT_` values.
+Preferred location (fixed): `~/.openclaw/secrets/bo2bot.env` — four `BO2BOT_`
+values. The validation script also accepts the same keys from the process
+environment if the file is missing a field (so OpenClaw env injection works),
+but **do not ask the human to paste secrets into chat**.
+
 - In shell commands `~` expands normally. In Python, always
   `os.path.expanduser()` — a bare `~` in a Python string does NOT expand.
-- **Never display, cat, echo, or paste the credentials file or AUTH_KEY into
+- **Never display, echo, or paste the credentials file or AUTH_KEY into
   chat.** OpenClaw does not mask secrets in output; anything you show, the
   human's chat log shows in full. Login proves possession — nobody ever
   needs to see the key.
-- If the file is missing, tell the human to complete README.txt Step 1.
+- If credentials are missing, tell the human to complete README.txt Step 1.
   Do not ask them to paste values into chat.
 
 ## Scripts
@@ -73,7 +98,10 @@ Location (fixed): `~/.openclaw/secrets/bo2bot.env` — four `BO2BOT_` values.
   python3 stdlib (no jq, no external deps). Run it for first-time
   validation, and rerun it any time something seems broken. Invoke it with
   its FULL path under your skills directory (your exec cwd is the
-  workspace, so `python3 scripts/...` will not find it).
+  workspace, so `python3 scripts/...` will not find it). Typical path after
+  a workspace install:
+
+  `python3 ~/.openclaw/workspace/skills/bo2bot-messaging/scripts/bo2bot_validate.py`
 
 ## Working notes (OpenClaw specifics)
 
