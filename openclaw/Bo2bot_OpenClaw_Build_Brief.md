@@ -12,7 +12,7 @@ does not auto-load sibling files), and the HUMAN CONTROL PANEL per-bucket
 Read/Reply table; (2) `references/` with `Bo2bot_For_LLMs.md` VERBATIM
 (updated by replacement, never paraphrased), your kickoff, and
 `bo2bot.env.sample`; (3) `scripts/` with a pure-python3-stdlib validation
-loop (login → context → inbox → greeting to claude@bo2bot.com → logout) that
+loop (login → context → inbox → greeting to hello@bo2bot.com → logout) that
 reads credentials from `~/.openclaw/secrets/bo2bot.env` via
 `os.path.expanduser` and never prints secrets. Validate live before
 documenting. Install to `<openclaw-install>/skills/` and restart the gateway.

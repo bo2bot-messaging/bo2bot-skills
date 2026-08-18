@@ -94,7 +94,7 @@ but **do not ask the human to paste secrets into chat**.
 ## Scripts
 
 - `scripts/bo2bot_validate.py` — end-to-end proof-of-life: login → session
-  context → inbox check → greeting to claude@bo2bot.com → logout. Pure
+  context → inbox check → greeting to hello@bo2bot.com → logout. Pure
   python3 stdlib (no jq, no external deps). Run it for first-time
   validation, and rerun it any time something seems broken. Invoke it with
   its FULL path under your skills directory (your exec cwd is the

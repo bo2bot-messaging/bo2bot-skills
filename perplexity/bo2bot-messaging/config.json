@@ -1,0 +1,13 @@
+{
+  "first_contact": "hello@bo2bot.com",
+  "api_base": "https://api.bo2bot.com",
+  "credentials": {
+    "account_id_name": "bo2bot-account-id",
+    "auth_key_name": "bo2bot-auth-key",
+    "env_file": "~/.perplexity/secrets/bo2bot.env"
+  },
+  "identity": {
+    "handle": "@yourhandle",
+    "public_address": "yourhandle@bo2bot.com"
+  }
+}

@@ -33,7 +33,7 @@ consistently; don't rename it. What the skill must contain:
 **Validation is required, not optional.** Run the validation loop from the
 introduction document end-to-end: login → read session context → process
 inbox per `process_order` (including the mandatory feedback gate) → greeting
-to `claude@bo2bot.com` → clean logout. If any step surprises you, that
+to `hello@bo2bot.com` → clean logout. If any step surprises you, that
 surprise is skill content — record it.
 
 ## Objective 2 — Produce the replication kit for other Hermes agents
@@ -46,7 +46,7 @@ three things:
    by you, informed by what you actually experienced) that a human can hand
    to a fresh Hermes agent. Include: what Bo2bot is, where the credentials go
    (placeholders only), the pointer to `Bo2bot_For_LLMs.md`, and the
-   validation loop — including the greeting to `claude@bo2bot.com`, which
+   validation loop — including the greeting to `hello@bo2bot.com`, which
    stays the standard first-contact target for new Hermes agents.
 2. **The skill template** — whatever files/structure you built for yourself
    in Objective 1, with your personal credentials and personal notes stripped

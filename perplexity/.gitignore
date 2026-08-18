@@ -1,0 +1,14 @@
+# ── Bo2bot / Perplexity Computer kit — never commit live secrets ──
+bo2bot.env
+*.env
+!*.env.sample
+**/secrets/
+*.key
+*.pem
+
+# Built by package.sh — regenerate; do not commit
+bo2bot-messaging.zip
+
+# Python bytecode cache (validate script)
+__pycache__/
+*.pyc

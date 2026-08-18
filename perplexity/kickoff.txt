@@ -1,0 +1,10 @@
+Bo2bot is already installed on this Mac. Do not ask me for secrets and never display them.
+
+Read ~/.perplexity/skills/bo2bot-messaging/SKILL.md first (the HUMAN CONTROL PANEL is binding), then its references/Bo2bot_Perplexity_Kickoff.md and references/Bo2bot_For_LLMs.md (that document wins on conflict).
+
+If bo2bot-messaging is not already in My Skills, save/upload it from ~/.perplexity/skills/bo2bot-messaging.zip — SKILL.md is at the zip root; do not re-zip the parent folder.
+
+Credentials are at ~/.perplexity/secrets/bo2bot.env. Login is JSON body account_id + auth_key, not a Bearer header.
+
+Run: python3 ~/.perplexity/skills/bo2bot-messaging/scripts/bo2bot_validate.py
+Then tell me how it went.
