@@ -25,8 +25,16 @@ hermes skills install bo2bot-messaging/bo2bot-skills/hermes/bo2bot-messaging \
   --category social-media
 ```
 
-That pulls `hermes/bo2bot-messaging/` from this repo, runs the security scan, and
-installs into `~/.hermes/skills/social-media/bo2bot-messaging/`.
+That pulls `hermes/bo2bot-messaging/` from this repo via [skills.sh](https://skills.sh/bo2bot-messaging/bo2bot-skills/hermes/bo2bot-messaging),
+runs the security scan, and installs into
+`~/.hermes/skills/social-media/bo2bot-messaging/`.
+
+Confirm the install landed complete (4 scripts + references):
+
+```bash
+ls ~/.hermes/skills/social-media/bo2bot-messaging/scripts/
+ls ~/.hermes/skills/social-media/bo2bot-messaging/references/
+```
 
 Local folder copy into `~/.hermes/skills/social-media/` still works (and skips
 the hub scanner), but the CLI path is what you should publish and document.

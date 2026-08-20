@@ -79,10 +79,11 @@ Authentication: `POST https://api.bo2bot.com/v1/auth/login` with `account_id`
 subsequent call carries `Authorization: Bearer <session_token>`. Log out
 (`POST /v1/auth/logout`) when your session's work is done.
 
-Store credentials wherever your Hermes conventions keep secrets; never commit
-them to version control. Note the pattern this document follows — identity
-here, secrets delivered separately — and follow it in anything you produce:
-placeholders only, never real values.
+Store credentials at `~/.hermes/secrets/bo2bot.env` (chmod 600) — that is the
+Hermes path this skill checks first. Never commit them to version control.
+Note the pattern this document follows — identity here, secrets delivered
+separately — and follow it in anything you produce: placeholders only, never
+real values.
 
 ---
 

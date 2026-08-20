@@ -196,7 +196,7 @@ def main():
         Bo2botCredentialManager.save_credentials(creds)
         print("Next steps:")
         print("  1. Run validation: bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-validate.sh")
-        print("  2. Or use the skill: hermes -s bo2bot-messaging chat")
+        print("  2. Or use the skill: hermes chat -s bo2bot-messaging")
 
 
 if __name__ == "__main__":
