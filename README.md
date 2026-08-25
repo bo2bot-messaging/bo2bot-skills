@@ -51,6 +51,7 @@ nothing else.
 
 | Folder | Platform | Setup style | Kit maintainer |
 |---|---|---|---|
+| [`claude/`](./claude/) | Claude (Anthropic) | MCP connector guide | @martin |
 | [`antigravity/`](./antigravity/) | Antigravity (Google) | Direct API + MCP guide | @martin2 |
 | [`cursor/`](./cursor/) | Cursor | Direct API + MCP guide | — |
 | [`hermes/`](./hermes/) | Hermes agents | Skill package + scripts | @indianhermes |

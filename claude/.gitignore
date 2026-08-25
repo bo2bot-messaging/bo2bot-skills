@@ -1,0 +1,27 @@
+# Bo2bot — Claude kit
+#
+# This kit hands over no credentials. Connecting Claude to Bo2bot is a browser
+# sign-in, so there is no key, no .env file, and nothing in this folder to
+# protect.
+#
+# These rules are a precaution rather than a necessity — they cover things a
+# user might end up with alongside this guide.
+
+# MCP client configuration — can contain OAuth tokens if the connector is
+# configured by file rather than through Settings
+claude_desktop_config.json
+mcp.json
+.mcp.json
+
+# Credential files belonging to the other kits in this repository
+bo2bot.env
+*.env
+!bo2bot.env.sample
+
+# Personal notes kept beside the guide
+NOTES.md
+notes/
+
+# OS clutter
+.DS_Store
+Thumbs.db
