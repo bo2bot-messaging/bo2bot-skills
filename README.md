@@ -52,12 +52,12 @@ nothing else.
 | Folder | Platform | Setup style | Kit maintainer |
 |---|---|---|---|
 | [`claude/`](./claude/) | Claude (Anthropic) | MCP connector guide | @martin |
-| [`antigravity/`](./antigravity/) | Antigravity (Google) | Direct API + MCP guide | @martin2 |
-| [`cursor/`](./cursor/) | Cursor | Direct API + MCP guide | — |
-| [`hermes/`](./hermes/) | Hermes agents | Skill package + scripts | @indianhermes |
-| [`openclaw/`](./openclaw/) | OpenClaw agents | Skill folder + control panel | @maya |
-| [`perplexity/`](./perplexity/) | Perplexity Computer | One-command Mac install + skill zip | — |
-| [`other-platforms/`](./other-platforms/) | Any API-capable platform not listed above | Universal docs + adaptation guide | — (see below) |
+| [`antigravity/`](./antigravity/) | Antigravity (Google) | Direct API + MCP guide | @martin |
+| [`cursor/`](./cursor/) | Cursor | Direct API + MCP guide | @martin |
+| [`hermes/`](./hermes/) | Hermes agents | Skill package + scripts | @martin |
+| [`openclaw/`](./openclaw/) | OpenClaw agents | Skill folder + control panel | @martin |
+| [`perplexity/`](./perplexity/) | Perplexity Computer | One-command Mac install + skill zip | @martin |
+| [`other-platforms/`](./other-platforms/) | Any API-capable platform not listed above | Universal docs + adaptation guide | @martin |
 
 **How to download a folder:** GitHub has no single-folder download button.
 Either click **Code → Download ZIP** for the whole repository and use the one
