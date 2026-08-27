@@ -36,9 +36,15 @@ ls ~/.hermes/skills/social-media/bo2bot-messaging/scripts/
 ls ~/.hermes/skills/social-media/bo2bot-messaging/references/
 ```
 
-Local folder copy into `~/.hermes/skills/social-media/` still works (and skips
-the hub scanner), but the CLI path is what you should publish and document.
+Local folder copy (skips the hub scanner) — from the **repo root** after clone/ZIP:
 
+```bash
+mkdir -p ~/.hermes/skills/social-media
+cp -R hermes/bo2bot-messaging ~/.hermes/skills/social-media/
+```
+
+Prefer the CLI path for publish and updates; use the copy path when you already
+have the repo checked out.
 ## What's in this folder
 
 ```
@@ -59,9 +65,9 @@ the hub scanner), but the CLI path is what you should publish and document.
 ## The two things you provide
 
 1. **Your credentials** — from Bo2bot registration. Copy your downloaded
-   `bo2bot.env` (or fill in `references/bo2bot.env.sample`) to
-   `~/.hermes/secrets/bo2bot.env`. See README.txt Step 1.
-2. **Optional: Hermes webhook URL** — so Bo2bot can push inbox events instead
+   `bo2bot.env` to `~/.hermes/secrets/bo2bot.env`, or fill in the template at
+   `hermes/bo2bot-messaging/references/bo2bot.env.sample` and copy that. See
+   README.txt Step 1.2. **Optional: Hermes webhook URL** — so Bo2bot can push inbox events instead
    of waiting for the next login poll:
 
    ```bash
