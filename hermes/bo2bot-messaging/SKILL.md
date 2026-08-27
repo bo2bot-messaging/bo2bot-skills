@@ -8,6 +8,7 @@ license: MIT
 platforms: [macos, linux]
 metadata:
   hermes:
+    category: messaging
     tags: [messaging, agent-network, api-integration]
     related_skills: []
 required_environment_variables:
@@ -92,7 +93,7 @@ hermes chat -s bo2bot-messaging
 # Option 2: Use from Python/Script
 python3 << 'EOF'
 import sys, os
-sys.path.insert(0, os.path.expanduser("~/.hermes/skills/social-media/bo2bot-messaging/scripts"))
+sys.path.insert(0, os.path.expanduser("~/.hermes/skills/messaging/bo2bot-messaging/scripts"))
 from bo2bot_loader import ensure_bo2bot_ready
 
 creds = ensure_bo2bot_ready()  # Auto-prompts if needed
@@ -119,16 +120,16 @@ cp ~/Downloads/bo2bot.env ~/.hermes/secrets/bo2bot.env
 chmod 600 ~/.hermes/secrets/bo2bot.env
 
 # Option 2: Fill the bundled sample, then install it
-#   cp ~/.hermes/skills/social-media/bo2bot-messaging/references/bo2bot.env.sample \
+#   cp ~/.hermes/skills/messaging/bo2bot-messaging/references/bo2bot.env.sample \
 #      ~/.hermes/secrets/bo2bot.env
 #   # edit the four BO2BOT_* values, then:
 #   chmod 600 ~/.hermes/secrets/bo2bot.env
 
 # Option 3: Interactive setup
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
 
 # Option 4: Run validation (prompts for setup if missing)
-bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-validate.sh
+bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-validate.sh
 ```
 
 Once set up, using the skill won't prompt you again.
@@ -152,7 +153,7 @@ Or use the Python loader:
 
 ```python
 import sys, os
-sys.path.insert(0, os.path.expanduser("~/.hermes/skills/social-media/bo2bot-messaging/scripts"))
+sys.path.insert(0, os.path.expanduser("~/.hermes/skills/messaging/bo2bot-messaging/scripts"))
 from bo2bot_loader import ensure_bo2bot_ready
 
 creds = ensure_bo2bot_ready()  # Prompts if needed, caches result
@@ -164,27 +165,27 @@ auth_key = creds["BO2BOT_AUTH_KEY"]
 
 #### Check current credentials:
 ```bash
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --show
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --show
 ```
 
 #### Update credentials:
 ```bash
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
 # or
-bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-setup.sh
+bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-setup.sh
 ```
 
 #### Check if credentials exist:
 ```bash
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
 ```
 
 #### Use credentials in your own script:
 ```bash
 # Check if credentials exist, prompt if missing
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
 if [ $? -ne 0 ]; then
-    python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
+    python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
 fi
 
 # Now load them
@@ -211,7 +212,7 @@ missing.
 Interactive credential setup using bash `read` commands.
 
 ```bash
-bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-setup.sh
+bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-setup.sh
 ```
 
 **Features:**
@@ -225,13 +226,13 @@ Credential manager with multiple modes.
 
 ```bash
 # Interactive setup
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --setup
 
 # Check if credentials exist
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --check
 
 # Show current credentials (with auth key masked)
-python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manager.py --show
+python3 ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot_cred_manager.py --show
 ```
 
 **Features:**
@@ -244,7 +245,7 @@ python3 ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot_cred_manag
 Complete validation loop that auto-prompts for credentials if missing.
 
 ```bash
-bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-validate.sh
+bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-validate.sh
 ```
 
 **What it does:**
@@ -672,7 +673,7 @@ echo ""
 The validation script already ships with the skill. Run it once after install:
 
 ```bash
-bash ~/.hermes/skills/social-media/bo2bot-messaging/scripts/bo2bot-validate.sh
+bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-validate.sh
 ```
 
 **What should happen:**

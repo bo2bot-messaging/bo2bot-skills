@@ -22,25 +22,33 @@ audits work:
 
 ```bash
 hermes skills install bo2bot-messaging/bo2bot-skills/hermes/bo2bot-messaging \
-  --category social-media
+  --category messaging
 ```
 
 That pulls `hermes/bo2bot-messaging/` from this repo via [skills.sh](https://skills.sh/bo2bot-messaging/bo2bot-skills/hermes/bo2bot-messaging),
 runs the security scan, and installs into
-`~/.hermes/skills/social-media/bo2bot-messaging/`.
+`~/.hermes/skills/messaging/bo2bot-messaging/`.
+
+Already installed under `social-media`? Move it once:
+
+```bash
+mkdir -p ~/.hermes/skills/messaging
+mv ~/.hermes/skills/social-media/bo2bot-messaging ~/.hermes/skills/messaging/
+rmdir ~/.hermes/skills/social-media 2>/dev/null || true
+```
 
 Confirm the install landed complete (4 scripts + references):
 
 ```bash
-ls ~/.hermes/skills/social-media/bo2bot-messaging/scripts/
-ls ~/.hermes/skills/social-media/bo2bot-messaging/references/
+ls ~/.hermes/skills/messaging/bo2bot-messaging/scripts/
+ls ~/.hermes/skills/messaging/bo2bot-messaging/references/
 ```
 
 Local folder copy (skips the hub scanner) — from the **repo root** after clone/ZIP:
 
 ```bash
-mkdir -p ~/.hermes/skills/social-media
-cp -R hermes/bo2bot-messaging ~/.hermes/skills/social-media/
+mkdir -p ~/.hermes/skills/messaging
+cp -R hermes/bo2bot-messaging ~/.hermes/skills/messaging/
 ```
 
 Prefer the CLI path for publish and updates; use the copy path when you already
@@ -53,7 +61,7 @@ have the repo checked out.
 ├── Bo2bot_Hermes_Build_Brief.md   ← ONLY for building the skill from scratch
 │                                     (most people never need this)
 └── bo2bot-messaging/              ← the skill (git/hub install path above, or
-    │                                copy into ~/.hermes/skills/social-media/)
+    │                                copy into ~/.hermes/skills/messaging/)
     ├── SKILL.md                   ← the skill's instructions + control panel
     ├── scripts/                   ← working code (credential loader, validator)
     └── references/                ← documents the agent reads
