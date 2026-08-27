@@ -111,6 +111,8 @@ Step 3.
 
 In Claude, open **Settings → Connectors** and choose **Add custom connector**.
 
+If you don't see "Connectors" in the settings list, search for "Connectors" in the search box on the settings screen.
+
 You'll be asked for four settings. Two are on the first screen. Two are usually
 tucked behind an *Advanced settings* link — open it if you don't see them.
 
