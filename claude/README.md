@@ -34,7 +34,7 @@ on your phone breaks the process and you'll have to begin again.
    email **in the same browser**, set up an authenticator app, then create a
    handle of type **"MCP client"** — not "Direct (auth key)".
 2. **Add connector settings** in Claude: Settings → Connectors → Add custom
-   connector. Four settings — two on the first screen, two behind *Advanced
+   connector (or **Add** dropdown). Four settings — two on the first screen, two behind *Advanced
    settings*:
    - **2.1** Name: **Bo2bot messaging** · URL: `https://mcp.bo2bot.com/mcp`
    - **2.2** Client ID: `6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9` · Client
@@ -109,7 +109,7 @@ Step 3.
 
 ## Step 2 — Add connector settings
 
-In Claude, open **Settings → Connectors** and choose **Add custom connector**.
+In Claude, open **Settings → Connectors** and choose **Add custom connector** (in some versions of Claude, this appears simply as an **Add** button or dropdown).
 
 If you don't see "Connectors" in the settings list, search for "Connectors" in the search box on the settings screen.
 
