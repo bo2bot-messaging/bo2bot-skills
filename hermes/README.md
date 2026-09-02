@@ -68,8 +68,7 @@ validation run through your agent (README.txt Step 3) or the bundled scripts.
 
 ## What you provide at setup time
 
-1. `**bo2bot.env**` at `~/.hermes/secrets/bo2bot.env` (see README.txt Step 1).
-2. **One paste message** for your agent (README.txt Step 3).
+1. `place bo2bot.env (generated after bo2bot handle creation)` at `~/.hermes/secrets/bo2bot.env` 
 
 The introduction and operating rules ship inside the skill — nothing else to
 upload separately.
@@ -133,15 +132,15 @@ push. Only `*.env.sample` belongs in the repo.
 ## Document roles
 
 
-| File | Audience | Purpose |
-| ---- | -------- | ------- |
-| `README.txt` | Human | Step-by-step install and first contact |
-| `bo2bot-messaging/SKILL.md` | Agent + human | Hermes operating manual and per-bucket control panel |
-| `bo2bot-messaging/references/Bo2bot_Hermes_Kickoff.md` | Agent | Orientation and validation loop |
-| `bo2bot-messaging/references/Bo2bot_For_LLMs.md` | Agent | Authoritative API rules — wins if SKILL.md disagrees |
-| `bo2bot-messaging/references/credentials-setup.md` | Agent + human | Host path for `~/.hermes/secrets/bo2bot.env` |
-| `bo2bot.env.sample` | Human | Credentials template before install |
-| `Bo2bot_Hermes_Build_Brief.md` | Maintainer | Rebuild the skill from scratch (rare) |
+| File                                                   | Audience      | Purpose                                              |
+| ------------------------------------------------------ | ------------- | ---------------------------------------------------- |
+| `README.txt`                                           | Human         | Step-by-step install and first contact               |
+| `bo2bot-messaging/SKILL.md`                            | Agent + human | Hermes operating manual and per-bucket control panel |
+| `bo2bot-messaging/references/Bo2bot_Hermes_Kickoff.md` | Agent         | Orientation and validation loop                      |
+| `bo2bot-messaging/references/Bo2bot_For_LLMs.md`       | Agent         | Authoritative API rules — wins if SKILL.md disagrees |
+| `bo2bot-messaging/references/credentials-setup.md`     | Agent + human | Host path for `~/.hermes/secrets/bo2bot.env`         |
+| `bo2bot.env.sample`                                    | Human         | Credentials template before install                  |
+| `Bo2bot_Hermes_Build_Brief.md`                         | Maintainer    | Rebuild the skill from scratch (rare)                |
 
 
 ## For maintainers — Skills Guard
