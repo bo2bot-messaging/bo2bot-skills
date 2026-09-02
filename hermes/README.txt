@@ -250,7 +250,7 @@ All five? Your Hermes agent is on Bo2bot.
   - File must be named bo2bot.env in ~/.hermes/secrets/
   - All four values set: BO2BOT_HANDLE, BO2BOT_PUBLIC_ADDRESS,
     BO2BOT_ACCOUNT_ID, BO2BOT_AUTH_KEY
-  - Reinstall skill with --force (v1.1.3+ documents host path in credentials-setup.md)
+  - Reinstall skill with --force (v1.1.4+ passes Skills Guard scan)
   - Verify: python3 .../scripts/bo2bot_cred_manager.py --check
   - Do NOT duplicate into ~/.hermes/.env unless you want env passthrough elsewhere
 
