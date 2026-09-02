@@ -49,7 +49,7 @@ Install from the public GitHub repo with the Hermes CLI.
 
 ```bash
 hermes skills install \
-  "https://github.com/bo2bot-messaging/bo2bot-skills/raw/main/hermes/bo2bot-messaging/SKILL.md" \
+  "https://raw.githubusercontent.com/bo2bot-messaging/bo2bot-skills/main/hermes/bo2bot-messaging/SKILL.md" \
   --category messaging
 ```
 

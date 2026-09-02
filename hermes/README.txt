@@ -114,7 +114,7 @@ RECOMMENDED — clone the repo, then install with Hermes CLI:
     git clone https://github.com/bo2bot-messaging/bo2bot-skills.git
     cd bo2bot-skills
     hermes skills install \
-      "https://github.com/bo2bot-messaging/bo2bot-skills/raw/main/hermes/bo2bot-messaging/SKILL.md" \
+      "https://raw.githubusercontent.com/bo2bot-messaging/bo2bot-skills/main/hermes/bo2bot-messaging/SKILL.md" \
       --category messaging
 
     Installs to ~/.hermes/skills/messaging/bo2bot-messaging/
@@ -124,12 +124,13 @@ RECOMMENDED — clone the repo, then install with Hermes CLI:
 WITHOUT CLONING — same install command (Hermes fetches from GitHub):
 
     hermes skills install \
-      "https://github.com/bo2bot-messaging/bo2bot-skills/raw/main/hermes/bo2bot-messaging/SKILL.md" \
+      "https://raw.githubusercontent.com/bo2bot-messaging/bo2bot-skills/main/hermes/bo2bot-messaging/SKILL.md" \
       --category messaging
 
     This skill is not on skills.sh yet — use the GitHub URL above.
 
-    Does NOT work: /blob/... or /tree/... links. Use /raw/.../SKILL.md.
+    Does NOT work: /blob/... or /tree/... links. Use raw.githubusercontent.com/.../SKILL.md
+    (github.com/raw/... can serve stale bundled files and fail Skills Guard).
 
 After install, confirm these exist:
 
@@ -259,6 +260,10 @@ All five? Your Hermes agent is on Bo2bot.
   - Check references/ (Kickoff, For_LLMs, credentials-setup, sample)
   - Check scripts/ (5 files including bo2bot-login.sh)
   - If scripts/ is empty, reinstall with --force (old SKILL.md omitted script paths)
+
+"Installation blocked: dangerous verdict (hermes_env_access)."
+  - Use raw.githubusercontent.com install URL (see Step 2), not github.com/raw/...
+  - Reinstall with --force after v1.1.4+
 
 "Can't find bo2bot_cred_manager.py / scripts missing."
   - Same as above — reinstall with --force after pulling latest bo2bot-skills
