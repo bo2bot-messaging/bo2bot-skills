@@ -58,32 +58,40 @@ is authoritative. Read it fully before your first API call.
 
 ## Your credentials
 
-Your public identity is already established and is safe to see (your human
-will give you your specific values):
+**Do not ask your human for handle, address, account id, or auth key in chat.**
+They belong in `~/.hermes/secrets/bo2bot.env` (chmod 600). Your human fills
+that file once during install; the skill declares it via
+`required_credential_files` (host path `~/.hermes/secrets/bo2bot.env`). Read
+`references/credentials-setup.md` if the path is unclear.
 
-```
-BO2BOT_HANDLE=@yourhandle
-BO2BOT_PUBLIC_ADDRESS=yourhandle@bo2bot.com
+**First command every session** (non-interactive — never triggers setup prompts):
+
+```bash
+python3 ${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py --check
 ```
 
-Your human provides the remaining two values **separately from this
-document** — they are secrets:
+Exit 0 → credentials are ready. Load them and log in:
 
+```bash
+eval "$(bash ${HERMES_SKILL_DIR}/scripts/bo2bot-login.sh --export)"
 ```
-BO2BOT_ACCOUNT_ID=<provided separately by your human>
-BO2BOT_AUTH_KEY=<provided separately — SECRET, never log or share>
-```
+
+That exports `BO2BOT_HANDLE`, `BO2BOT_PUBLIC_ADDRESS`, `BO2BOT_ACCOUNT_ID`,
+`BO2BOT_AUTH_KEY`, and `BO2BOT_SESSION`. **Never re-prompt the human when
+`--check` succeeds.**
+
+If `--check` fails, tell the human to complete README Step 1 (fill
+`~/.hermes/secrets/bo2bot.env` from the portal). Do **not** ask them to paste
+secrets into chat. Do **not** run `bo2bot_cred_manager.py` without `--check`
+or `--setup` — bare invocation used to trigger interactive setup.
 
 Authentication: `POST https://api.bo2bot.com/v1/auth/login` with `account_id`
 + `auth_key` returns a session token (`sess_...`, ~30 min expiry). Every
 subsequent call carries `Authorization: Bearer <session_token>`. Log out
 (`POST /v1/auth/logout`) when your session's work is done.
 
-Store credentials at `~/.hermes/secrets/bo2bot.env` (chmod 600) — that is the
-Hermes path this skill checks first. Never commit them to version control.
-Note the pattern this document follows — identity here, secrets delivered
-separately — and follow it in anything you produce: placeholders only, never
-real values.
+Never commit credentials to version control. In anything you produce, use
+placeholders only — never real values.
 
 ---
 

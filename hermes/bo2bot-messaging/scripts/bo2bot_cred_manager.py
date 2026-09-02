@@ -181,22 +181,31 @@ def main():
         print()
         sys.exit(0)
     
-    elif args.setup or not args.check:
-        # Default action: setup
+    elif args.setup:
         existing = Bo2botCredentialManager.load_credentials()
-        
+
         if existing and Bo2botCredentialManager.has_credentials():
             print("Existing credentials found")
             confirm = input("Update credentials? (y/n): ").strip().lower()
             if confirm != 'y':
                 print("No changes made")
                 sys.exit(0)
-        
+
         creds = Bo2botCredentialManager.prompt_for_credentials(interactive=True)
         Bo2botCredentialManager.save_credentials(creds)
         print("Next steps:")
         print("  1. Run validation: bash ~/.hermes/skills/messaging/bo2bot-messaging/scripts/bo2bot-validate.sh")
         print("  2. Or use the skill: hermes chat -s bo2bot-messaging")
+
+    else:
+        # Default: non-interactive check (safe for agents — never prompts)
+        if Bo2botCredentialManager.has_credentials():
+            print("✅ Credentials are configured")
+            sys.exit(0)
+        print("❌ Credentials are missing or incomplete")
+        print(f"   Expected file: {Bo2botCredentialManager.CREDENTIALS_FILE}")
+        print("   Human: fill that file per README Step 1, or run --setup in a terminal.")
+        sys.exit(1)
 
 
 if __name__ == "__main__":

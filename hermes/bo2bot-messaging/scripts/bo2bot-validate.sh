@@ -14,20 +14,14 @@ echo ""
 CREDS_FILE=~/.hermes/secrets/bo2bot.env
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Check if credentials exist
-if [ ! -f "$CREDS_FILE" ]; then
-    echo "📋 No credentials found. Setting up now..."
+# Check credentials (non-interactive — never auto-prompt in agent sessions)
+if ! python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --check; then
     echo ""
-    
-    # Use Python script for interactive credential setup
-    python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --setup
-    
-    if [ ! -f "$CREDS_FILE" ]; then
-        echo "❌ Credential setup failed"
-        exit 1
-    fi
-    echo ""
+    echo "Fill $CREDS_FILE per README Step 1, or run --setup in your own terminal:"
+    echo "  python3 $SCRIPT_DIR/bo2bot_cred_manager.py --setup"
+    exit 1
 fi
+echo ""
 
 # Load credentials
 source "$CREDS_FILE"

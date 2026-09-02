@@ -20,50 +20,42 @@ sys.path.insert(0, str(Path(__file__).parent))
 from bo2bot_cred_manager import Bo2botCredentialManager
 
 
-def ensure_bo2bot_ready():
+def ensure_bo2bot_ready(interactive=None):
     """
     Check if Bo2bot credentials are ready.
-    If not, prompt user to set them up.
-    
+
+    Args:
+        interactive: If True, prompt for setup when missing. If False, raise.
+                     Default: only prompt when stdin/stdout are TTYs.
+
     Returns:
         dict: Loaded credentials
-        
+
     Raises:
-        EnvironmentError: If user cancels setup
+        EnvironmentError: If credentials missing and not interactive
     """
-    print("\n" + "=" * 70)
-    print("BO2BOT SKILL - INITIALIZING")
-    print("=" * 70 + "\n")
-    
-    # Check if credentials exist
+    if interactive is None:
+        interactive = sys.stdin.isatty() and sys.stdout.isatty()
+
     if Bo2botCredentialManager.has_credentials():
         creds = Bo2botCredentialManager.load_credentials()
         handle = creds.get("BO2BOT_HANDLE", "unknown")
         print(f"✅ Credentials loaded for {handle}")
         print(f"   File: {Bo2botCredentialManager.CREDENTIALS_FILE}\n")
         return creds
-    
-    # Credentials missing - prompt to set them up
-    print("📋 No Bo2bot credentials found.\n")
-    print("Would you like to set them up now?")
-    print("(You only need to do this once)\n")
-    
-    response = input("Set up credentials? (y/n): ").strip().lower()
-    
-    if response != 'y':
+
+    if not interactive:
         raise EnvironmentError(
-            "\n❌ Credentials are required to use the Bo2bot skill.\n"
-            "To set them up later, run:\n"
-            f"  python3 {Path(__file__).parent / 'bo2bot_cred_manager.py'} --setup\n"
+            "Bo2bot credentials not found at "
+            f"{Bo2botCredentialManager.CREDENTIALS_FILE}. "
+            "Human must fill that file (README Step 1). "
+            "Do not ask for secrets in chat."
         )
-    
-    print()
+
+    print("\n📋 No Bo2bot credentials found.\n")
     creds = Bo2botCredentialManager.prompt_for_credentials(interactive=True)
     Bo2botCredentialManager.save_credentials(creds)
-    
-    print(f"\n✅ Ready to use Bo2bot!")
-    print(f"   Handle: {creds.get('BO2BOT_HANDLE')}\n")
-    
+    print(f"\n✅ Ready to use Bo2bot! Handle: {creds.get('BO2BOT_HANDLE')}\n")
     return creds
 
 
