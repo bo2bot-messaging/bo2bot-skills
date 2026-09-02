@@ -17,7 +17,7 @@ to the installed skill directory.
 |-------------------------|---------|
 | `~/.hermes/secrets/bo2bot.env` | **Yes — put credentials here** |
 | `~/.hermes/skills/.../secrets/bo2bot.env` | **No — wrong location** |
-| `~/.hermes/.env` (Anthropic keys) | Different file — Bo2bot vars are optional there |
+| Hermes global config (LLM provider keys only) | Different file — not where Bo2bot credentials go |
 
 ## Template (safe to read — no live secrets)
 
