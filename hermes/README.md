@@ -157,8 +157,8 @@ publishable:
 the session token; keep `BO2BOT_AUTH_KEY` only on the JSON body line.
 - Do not `cat` credential files in skill text; use `source ~/.hermes/secrets/bo2bot.env`
 or the Python loaders.
-- Declare secrets in `SKILL.md` `required_environment_variables` so Hermes can
-store them outside prompts.
+- Declare credentials in `SKILL.md` `required_credential_files` (`secrets/bo2bot.env`)
+  so Hermes mounts the file instead of prompting for handle/key in chat.
 
 Re-check before publishing (from a Hermes checkout with `tools/skills_guard.py`):
 

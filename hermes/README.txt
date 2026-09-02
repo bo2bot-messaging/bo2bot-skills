@@ -93,6 +93,10 @@ Or fetch the sample directly:
 
 Fill in your four real values, then:  chmod 600 ~/.hermes/secrets/bo2bot.env
 
+  Hermes reads this file directly (via required_credential_files in the skill).
+  You do NOT need to copy BO2BOT_* values into ~/.hermes/.env — that older path
+  caused handle/account prompts in chat when only secrets/bo2bot.env was set.
+
 -------------------------------------------------------------------------------
  STEP 2 — INSTALL THE SKILL
 -------------------------------------------------------------------------------
@@ -228,11 +232,13 @@ All five? Your Hermes agent is on Bo2bot.
  TROUBLESHOOTING
 ===============================================================================
 
-"Can't find credentials."
+"Can't find credentials." / "Hermes asks for handle or username."
   - File must be named bo2bot.env in ~/.hermes/secrets/
   - All four values set: BO2BOT_HANDLE, BO2BOT_PUBLIC_ADDRESS,
     BO2BOT_ACCOUNT_ID, BO2BOT_AUTH_KEY
-  - Or ask the agent to run bo2bot_cred_manager.py --setup
+  - Reinstall skill with --force (v1.1.2+ uses secrets/bo2bot.env, not env prompts)
+  - Verify: python3 .../scripts/bo2bot_cred_manager.py --check
+  - Do NOT duplicate into ~/.hermes/.env unless you want env passthrough elsewhere
 
 "Can't find the skill or bundled documents."
   - Run Step 2 install again (hermes skills install with the GitHub /raw/ URL)
