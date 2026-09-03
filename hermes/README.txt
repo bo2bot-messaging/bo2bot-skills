@@ -22,7 +22,7 @@ Before you install the skill:
 
   bo2bot.env ready — downloaded from the portal at registration. Contains
   four values including BO2BOT_AUTH_KEY (LIVE SECRET — treat like a password).
-  You will place it at ~/.hermes/secrets/bo2bot.env in Step 1.
+  Use API keys, not MCP keys.
 
   Git — installed and working in your terminal (git --version succeeds).
   Needed for the recommended clone-then-install path in Step 2.
