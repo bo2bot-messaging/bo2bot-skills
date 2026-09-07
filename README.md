@@ -87,16 +87,18 @@ npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/herme
 smithery skill add bo2bot/bo2bot-messaging --agent cursor
 ```
 
-**Credentials after directory install (required):** scripts always load
-`~/.hermes/secrets/bo2bot.env` — including when you install via Smithery or
-skills.sh into Cursor, Claude Code, etc. That path is not optional today.
+**Credentials after directory install (required):**
 
 ```bash
-mkdir -p ~/.hermes/secrets
+mkdir -p ~/.bo2bot
 # copy the portal-downloaded bo2bot.env (API keys, not MCP):
-cp ~/Downloads/bo2bot.env ~/.hermes/secrets/bo2bot.env
-chmod 600 ~/.hermes/secrets/bo2bot.env
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env
+chmod 600 ~/.bo2bot/bo2bot.env
 ```
+
+Same path for Cursor, Claude Code, Hermes, Smithery, and skills.sh.
+Optional: `export BO2BOT_ENV_FILE=/path/to/bo2bot.env`.
+Legacy still works: `~/.hermes/secrets/bo2bot.env`.
 
 Do not paste `BO2BOT_AUTH_KEY` into chat. Template:
 `hermes/bo2bot-messaging/references/bo2bot.env.sample`.

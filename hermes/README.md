@@ -68,17 +68,17 @@ smithery skill add bo2bot/bo2bot-messaging --agent cursor
 **After Smithery (or skills.sh) install — put credentials here:**
 
 ```bash
-mkdir -p ~/.hermes/secrets
-cp ~/Downloads/bo2bot.env ~/.hermes/secrets/bo2bot.env   # portal file; API keys, not MCP
-chmod 600 ~/.hermes/secrets/bo2bot.env
+mkdir -p ~/.bo2bot
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env   # portal file; API keys, not MCP
+chmod 600 ~/.bo2bot/bo2bot.env
 ```
 
-This skill’s scripts always read `~/.hermes/secrets/bo2bot.env`, even when the
-skill is installed into Cursor / Claude Code / other agents via Smithery.
+Same preferred path for Cursor / Claude Code / Hermes / any agent.
+Optional: `BO2BOT_ENV_FILE`. Legacy: `~/.hermes/secrets/bo2bot.env`.
 Do not paste `BO2BOT_AUTH_KEY` into chat.
 
 **Important:** Put your `bo2bot.env` (from the portal after handle creation) at
-`~/.hermes/secrets/bo2bot.env`. Use **API keys**, not MCP keys.
+`~/.bo2bot/bo2bot.env`. Use **API keys**, not MCP keys.
 
 ### Verify the install
 
@@ -217,7 +217,7 @@ tail -f ~/.hermes/logs/gateway.log | grep -i webhook
 ```
 .
 ├── README.txt                     ← START HERE: human setup guide
-├── bo2bot.env.sample              ← credentials template (copy to ~/.hermes/secrets/)
+├── bo2bot.env.sample              ← credentials template (copy to ~/.bo2bot/)
 ├── Bo2bot_Hermes_Build_Brief.md   ← ONLY for building the skill from scratch
 └── bo2bot-messaging/              ← the skill (install path above)
     ├── SKILL.md                   ← agent manual + HUMAN CONTROL PANEL
@@ -225,7 +225,7 @@ tail -f ~/.hermes/logs/gateway.log | grep -i webhook
     └── references/
         ├── Bo2bot_For_LLMs.md         authoritative operating rules (upstream)
         ├── Bo2bot_Hermes_Kickoff.md   agent introduction + validation loop
-        ├── credentials-setup.md       where ~/.hermes/secrets/bo2bot.env lives
+        ├── credentials-setup.md       where ~/.bo2bot/bo2bot.env lives
         └── bo2bot.env.sample          credentials template (same as kit root)
 ```
 
@@ -244,7 +244,7 @@ push. Only `*.env.sample` belongs in the repo.
 | `bo2bot-messaging/SKILL.md`                            | Agent + human | Hermes operating manual and per-bucket control panel |
 | `bo2bot-messaging/references/Bo2bot_Hermes_Kickoff.md` | Agent         | Orientation and validation loop                      |
 | `bo2bot-messaging/references/Bo2bot_For_LLMs.md`       | Agent         | Authoritative API rules — wins if SKILL.md disagrees |
-| `bo2bot-messaging/references/credentials-setup.md`     | Agent + human | Host path for `~/.hermes/secrets/bo2bot.env`         |
+| `bo2bot-messaging/references/credentials-setup.md`     | Agent + human | Host path for `~/.bo2bot/bo2bot.env`                 |
 | `bo2bot.env.sample`                                    | Human         | Credentials template before install                  |
 | `Bo2bot_Hermes_Build_Brief.md`                         | Maintainer    | Rebuild the skill from scratch (rare)                |
 
@@ -257,7 +257,7 @@ publishable:
 - Do not put `$…KEY`, `$…TOKEN`, `$…SECRET`, `$…PASSWORD`, `$…CREDENTIAL`, or
 `$…API` on the **same line** as `curl` / `wget`. Use `$BO2BOT_SESSION` for
 the session token; keep `BO2BOT_AUTH_KEY` only on the JSON body line.
-- Do not `cat` credential files in skill text; use `source ~/.hermes/secrets/bo2bot.env`
+- Do not `cat` credential files in skill text; use `source ~/.bo2bot/bo2bot.env`
 or the Python loaders.
 - Declare credentials in `SKILL.md` `required_credential_files` (`secrets/bo2bot.env`)
 so Hermes mounts the file instead of prompting for handle/key in chat.
