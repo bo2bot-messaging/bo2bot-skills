@@ -69,6 +69,26 @@ git clone https://github.com/bo2bot-messaging/bo2bot-skills.git
 
 Then follow the `README` inside your platform's folder.
 
+## Install the skill from directories
+
+The Hermes `bo2bot-messaging` skill is also installable from public skill
+directories (API credentials / `bo2bot.env` — not MCP keys):
+
+```bash
+# skills.sh (Vercel skills CLI)
+npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
+
+# path-scoped install (same skill)
+npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes/bo2bot-messaging
+```
+
+```bash
+# Smithery Skills
+smithery skill add bo2bot/bo2bot-messaging
+```
+
+[![skills.sh](https://skills.sh/b/bo2bot-messaging/bo2bot-skills)](https://skills.sh/bo2bot-messaging/bo2bot-skills)
+
 ## 3. What every kit contains (and why you can trust it)
 
 Kits share the same ideas, but not every folder is identical:

@@ -44,7 +44,7 @@ values manually.
 
 ## Install the skill
 
-Install from the public GitHub repo with the Hermes CLI. 
+### Option A — Hermes CLI (GitHub raw)
 
 ```bash
 hermes skills install \
@@ -52,8 +52,20 @@ hermes skills install \
   --category messaging
 ```
 
+### Option B — skills.sh
+
+```bash
+npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
+```
+
+### Option C — Smithery
+
+```bash
+smithery skill add bo2bot/bo2bot-messaging
+```
+
 **Important:** Put your `bo2bot.env` (from the portal after handle creation) at
-`~/.hermes/secrets/bo2bot.env`.
+`~/.hermes/secrets/bo2bot.env`. Use **API keys**, not MCP keys.
 
 ### Verify the install
 
