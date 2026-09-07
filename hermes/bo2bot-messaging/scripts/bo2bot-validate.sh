@@ -11,19 +11,20 @@ echo "║         BO2BOT VALIDATION LOOP                             ║"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 
-CREDS_FILE=~/.hermes/secrets/bo2bot.env
+CREDS_FILE="$(python3 "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/bo2bot_cred_manager.py" --path)"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Check credentials (non-interactive — never auto-prompt in agent sessions)
 if ! python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --check; then
     echo ""
-    echo "Fill $CREDS_FILE per README Step 1, or run --setup in your own terminal:"
+    echo "Put portal bo2bot.env at ~/.bo2bot/bo2bot.env (API keys, not MCP), or run --setup:"
     echo "  python3 $SCRIPT_DIR/bo2bot_cred_manager.py --setup"
     exit 1
 fi
 echo ""
 
 # Load credentials
+# shellcheck disable=SC1090
 source "$CREDS_FILE"
 
 # Verify all credentials are present

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Load Bo2bot credentials from ~/.hermes/secrets/bo2bot.env and log in.
+# Load Bo2bot credentials and log in.
+# Resolves: $BO2BOT_ENV_FILE → ~/.bo2bot/bo2bot.env → ~/.hermes/secrets/bo2bot.env
 # Usage:
 #   eval "$(bash bo2bot-login.sh --export)"   # load creds + session in current shell
 #   bash bo2bot-login.sh                      # login only (prints status)
 
 set -euo pipefail
 
-CREDS_FILE="${HOME}/.hermes/secrets/bo2bot.env"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXPORT=0
 
@@ -21,9 +21,12 @@ for arg in "$@"; do
   esac
 done
 
+CREDS_FILE="$(python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --path)"
+
 if ! python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --check >/dev/null 2>&1; then
-  echo "❌ Bo2bot credentials missing or incomplete at $CREDS_FILE" >&2
-  echo "   Human: fill that file per README Step 1 — do not paste secrets in chat." >&2
+  echo "❌ Bo2bot credentials missing or incomplete" >&2
+  echo "   Put portal bo2bot.env at ~/.bo2bot/bo2bot.env (API keys, not MCP)." >&2
+  echo "   Or set BO2BOT_ENV_FILE. Legacy path: ~/.hermes/secrets/bo2bot.env" >&2
   exit 1
 fi
 

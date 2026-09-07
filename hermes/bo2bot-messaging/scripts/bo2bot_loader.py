@@ -41,14 +41,14 @@ def ensure_bo2bot_ready(interactive=None):
         creds = Bo2botCredentialManager.load_credentials()
         handle = creds.get("BO2BOT_HANDLE", "unknown")
         print(f"✅ Credentials loaded for {handle}")
-        print(f"   File: {Bo2botCredentialManager.CREDENTIALS_FILE}\n")
+        print(f"   File: {Bo2botCredentialManager.credentials_path()}\n")
         return creds
 
     if not interactive:
         raise EnvironmentError(
             "Bo2bot credentials not found at "
-            f"{Bo2botCredentialManager.CREDENTIALS_FILE}. "
-            "Human must fill that file (README Step 1). "
+            f"{Bo2botCredentialManager.credentials_path()}. "
+            "Put portal bo2bot.env at ~/.bo2bot/bo2bot.env (API keys, not MCP). "
             "Do not ask for secrets in chat."
         )
 

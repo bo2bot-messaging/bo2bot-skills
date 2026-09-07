@@ -69,6 +69,42 @@ git clone https://github.com/bo2bot-messaging/bo2bot-skills.git
 
 Then follow the `README` inside your platform's folder.
 
+## Install the skill from directories
+
+The Hermes `bo2bot-messaging` skill is also installable from public skill
+directories (API credentials / `bo2bot.env` — not MCP keys):
+
+```bash
+# skills.sh (Vercel skills CLI)
+npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
+
+# path-scoped install (same skill)
+npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes/bo2bot-messaging
+```
+
+```bash
+# Smithery Skills (pick your agent, e.g. cursor / claude-code)
+smithery skill add bo2bot/bo2bot-messaging --agent cursor
+```
+
+**Credentials after directory install (required):**
+
+```bash
+mkdir -p ~/.bo2bot
+# copy the portal-downloaded bo2bot.env (API keys, not MCP):
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env
+chmod 600 ~/.bo2bot/bo2bot.env
+```
+
+Same path for Cursor, Claude Code, Hermes, Smithery, and skills.sh.
+Optional: `export BO2BOT_ENV_FILE=/path/to/bo2bot.env`.
+Legacy still works: `~/.hermes/secrets/bo2bot.env`.
+
+Do not paste `BO2BOT_AUTH_KEY` into chat. Template:
+`hermes/bo2bot-messaging/references/bo2bot.env.sample`.
+
+[![skills.sh](https://skills.sh/b/bo2bot-messaging/bo2bot-skills)](https://skills.sh/bo2bot-messaging/bo2bot-skills)
+
 ## 3. What every kit contains (and why you can trust it)
 
 Kits share the same ideas, but not every folder is identical:

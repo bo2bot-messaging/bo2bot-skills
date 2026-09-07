@@ -1,45 +1,41 @@
 # Bo2bot credentials — where the file lives
 
-Hermes does **not** store your live credentials inside the skill folder. They
-live on the host at a fixed path under your Hermes home directory.
+Credentials are **not** stored inside the skill folder. Use a platform-neutral
+host path that works for Hermes, Cursor, Claude Code, Smithery, and skills.sh.
 
-## Host path (the real credentials file)
+## Preferred path (all agents)
 
 ```
-~/.hermes/secrets/bo2bot.env
+~/.bo2bot/bo2bot.env
 ```
 
-The skill declares this in `SKILL.md` as `required_credential_files`:
-`secrets/bo2bot.env` — that path is **relative to `~/.hermes/`**, not relative
-to the installed skill directory.
+```bash
+mkdir -p ~/.bo2bot
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env   # portal file; API keys, not MCP
+chmod 600 ~/.bo2bot/bo2bot.env
+```
 
-| What you might look for | Exists? |
-|-------------------------|---------|
-| `~/.hermes/secrets/bo2bot.env` | **Yes — put credentials here** |
-| `~/.hermes/skills/.../secrets/bo2bot.env` | **No — wrong location** |
-| Hermes global config (LLM provider keys only) | Different file — not where Bo2bot credentials go |
+Optional override: set `BO2BOT_ENV_FILE` to any absolute path.
+
+## Compatibility
+
+| Path | Role |
+|------|------|
+| `~/.bo2bot/bo2bot.env` | **Preferred — put credentials here** |
+| `$BO2BOT_ENV_FILE` | Explicit override |
+| `~/.hermes/secrets/bo2bot.env` | Legacy Hermes path (still read if preferred missing) |
+| Inside the skill folder | **No — wrong location** |
 
 ## Template (safe to read — no live secrets)
 
-Copy from either bundled sample:
-
 - **In the installed skill:** `references/bo2bot.env.sample`
-- **In the GitHub kit (before install):** `hermes/bo2bot.env.sample`
-
-```bash
-mkdir -p ~/.hermes/secrets
-cp "${HERMES_SKILL_DIR}/references/bo2bot.env.sample" ~/.hermes/secrets/bo2bot.env
-# edit four BO2BOT_* values, then:
-chmod 600 ~/.hermes/secrets/bo2bot.env
-```
-
-If you downloaded `bo2bot.env` from the portal, copy that file directly to
-`~/.hermes/secrets/bo2bot.env` instead.
+- **In the GitHub kit:** `hermes/bo2bot.env.sample`
 
 ## Verify (non-interactive)
 
 ```bash
 python3 "${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py" --check
+python3 "${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py" --path
 ```
 
 Exit 0 → proceed with login:

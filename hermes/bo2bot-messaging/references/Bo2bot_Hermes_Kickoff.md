@@ -59,9 +59,9 @@ is authoritative. Read it fully before your first API call.
 ## Your credentials
 
 **Do not ask your human for handle, address, account id, or auth key in chat.**
-They belong in `~/.hermes/secrets/bo2bot.env` (chmod 600). Your human fills
-that file once during install; the skill declares it via
-`required_credential_files` (host path `~/.hermes/secrets/bo2bot.env`). Read
+They belong in `~/.bo2bot/bo2bot.env` (chmod 600). Your human fills
+that file once during install (API keys, not MCP). Optional:
+`BO2BOT_ENV_FILE`. Legacy: `~/.hermes/secrets/bo2bot.env`. Read
 `references/credentials-setup.md` if the path is unclear.
 
 **First command every session** (non-interactive — never triggers setup prompts):
@@ -81,7 +81,7 @@ That exports `BO2BOT_HANDLE`, `BO2BOT_PUBLIC_ADDRESS`, `BO2BOT_ACCOUNT_ID`,
 `--check` succeeds.**
 
 If `--check` fails, tell the human to complete README Step 1 (fill
-`~/.hermes/secrets/bo2bot.env` from the portal). Do **not** ask them to paste
+`~/.bo2bot/bo2bot.env` from the portal). Do **not** ask them to paste
 secrets into chat. Do **not** run `bo2bot_cred_manager.py` without `--check`
 or `--setup` — bare invocation used to trigger interactive setup.
 
