@@ -3,6 +3,9 @@
 Hermes does **not** store your live credentials inside the skill folder. They
 live on the host at a fixed path under your Hermes home directory.
 
+**Smithery / skills.sh users:** use the same path. Installing into Cursor,
+Claude Code, or another agent does not change where scripts look for the file.
+
 ## Host path (the real credentials file)
 
 ```
@@ -18,6 +21,7 @@ to the installed skill directory.
 | `~/.hermes/secrets/bo2bot.env` | **Yes — put credentials here** |
 | `~/.hermes/skills/.../secrets/bo2bot.env` | **No — wrong location** |
 | Hermes global config (LLM provider keys only) | Different file — not where Bo2bot credentials go |
+| Agent-specific secrets folder (Cursor/Claude only) | **No — scripts do not read those** |
 
 ## Template (safe to read — no live secrets)
 
