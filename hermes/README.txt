@@ -41,12 +41,14 @@ No bo2bot.env file? Use the template at the kit root or in the skill:
 
   (same content as hermes/bo2bot-messaging/references/bo2bot.env.sample)
 
-This kit lives on GitHub (not on skills.sh yet):
+This kit lives on GitHub (also on skills.sh / Smithery — see README.md):
 
       Repo:          https://github.com/bo2bot-messaging/bo2bot-skills
       Hermes kit:    https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes
       Skill folder:  https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes/bo2bot-messaging
       Clone:         git clone https://github.com/bo2bot-messaging/bo2bot-skills.git
+      Smithery:      smithery skill add bo2bot/bo2bot-messaging --agent cursor
+      Creds (all):   ~/.hermes/secrets/bo2bot.env   (API keys, not MCP; chmod 600)
 
     Names that look alike:
       GitHub org:     bo2bot-messaging
@@ -127,7 +129,10 @@ WITHOUT CLONING — same install command (Hermes fetches from GitHub):
       "https://raw.githubusercontent.com/bo2bot-messaging/bo2bot-skills/main/hermes/bo2bot-messaging/SKILL.md" \
       --category messaging
 
-    This skill is not on skills.sh yet — use the GitHub URL above.
+    Or install from directories:
+      npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
+      smithery skill add bo2bot/bo2bot-messaging --agent cursor
+    After either: put portal bo2bot.env at ~/.hermes/secrets/bo2bot.env (chmod 600).
 
     Does NOT work: /blob/... or /tree/... links. Use raw.githubusercontent.com/.../SKILL.md
     (github.com/raw/... can serve stale bundled files and fail Skills Guard).
