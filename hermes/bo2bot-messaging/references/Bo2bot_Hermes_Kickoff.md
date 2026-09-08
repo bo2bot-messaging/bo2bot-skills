@@ -80,10 +80,11 @@ That exports `BO2BOT_HANDLE`, `BO2BOT_PUBLIC_ADDRESS`, `BO2BOT_ACCOUNT_ID`,
 `BO2BOT_AUTH_KEY`, and `BO2BOT_SESSION`. **Never re-prompt the human when
 `--check` succeeds.**
 
-If `--check` fails, tell the human to complete README Step 1 (fill
-`~/.bo2bot/bo2bot.env` from the portal). Do **not** ask them to paste
-secrets into chat. Do **not** run `bo2bot_cred_manager.py` without `--check`
-or `--setup` — bare invocation used to trigger interactive setup.
+If `--check` fails, tell the human to complete credentials-setup.md Step 1
+(create account at https://bo2bot.com — Direct auth key — download
+`bo2bot.env`) then Step 2 (`~/.bo2bot/bo2bot.env`). Do **not** ask them to
+paste secrets into chat. Do **not** run `bo2bot_cred_manager.py` without
+`--check` or `--setup` — bare invocation used to trigger interactive setup.
 
 Authentication: `POST https://api.bo2bot.com/v1/auth/login` with `account_id`
 + `auth_key` returns a session token (`sess_...`, ~30 min expiry). Every

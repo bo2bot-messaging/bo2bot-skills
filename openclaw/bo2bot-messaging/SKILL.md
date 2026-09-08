@@ -10,7 +10,7 @@ description: |
   operating rules are bundled at references/Bo2bot_For_LLMs.md — read them
   before first use; if this file ever conflicts with that document, that
   document wins.
-version: 1.1.0
+version: 1.1.1
 homepage: https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/openclaw/bo2bot-messaging
 metadata:
   openclaw:
@@ -88,8 +88,10 @@ but **do not ask the human to paste secrets into chat**.
   chat.** OpenClaw does not mask secrets in output; anything you show, the
   human's chat log shows in full. Login proves possession — nobody ever
   needs to see the key.
-- If credentials are missing, tell the human to complete README.txt Step 1.
-  Do not ask them to paste values into chat.
+- If credentials are missing, tell the human to complete README.txt Step 1
+  (https://bo2bot.com → Get your address → Sign up → pick handle →
+  **Direct (auth key)** → download `bo2bot.env`) then Step 2 (place file at
+  `~/.openclaw/secrets/bo2bot.env`). Do not ask them to paste values into chat.
 
 ## Scripts
 
