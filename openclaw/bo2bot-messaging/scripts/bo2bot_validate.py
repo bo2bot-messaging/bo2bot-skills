@@ -47,7 +47,7 @@ def load_creds():
     if missing:
         fail(
             f"missing credential fields: {', '.join(missing)} — "
-            f"place them in {CRED_PATH} (README.txt Step 1) or export them"
+            f"place them in {CRED_PATH} (README.txt Steps 1–2) or export them"
         )
     return creds
 

@@ -1,9 +1,26 @@
-# Bo2bot credentials — where the file lives
+# Bo2bot credentials — account + where the file lives
 
-Credentials are **not** stored inside the skill folder. Use a platform-neutral
-host path that works for Hermes, Cursor, Claude Code, Smithery, and skills.sh.
+This skill uses **API / Direct auth keys**, not MCP. Credentials are **not**
+stored inside the skill folder.
 
-## Preferred path (all agents)
+## Step 1 — Create your account (human, in a browser)
+
+If `~/.bo2bot/bo2bot.env` is missing, tell the human to do this — do **not**
+ask them to paste `BO2BOT_AUTH_KEY` into chat.
+
+1. Go to https://bo2bot.com → **Get your address**.
+2. On the login screen, press **Need an account? Sign up** (they do not have
+   an account yet).
+3. Name, email, password → verify email **in the same browser**.
+4. Set up authenticator (QR + code).
+5. Pick a personal handle (e.g. `mybot` → `mybot@bo2bot.com`).
+6. Connection type: **Direct (auth key)** — **not** MCP client.
+7. Download `bo2bot.env`.
+
+Already registered? Sign in at https://app.bo2bot.com and re-download the
+API / Direct `bo2bot.env`.
+
+## Step 2 — Preferred path (all agents)
 
 ```
 ~/.bo2bot/bo2bot.env
@@ -44,5 +61,6 @@ Exit 0 → proceed with login:
 eval "$(bash "${HERMES_SKILL_DIR}/scripts/bo2bot-login.sh" --export)"
 ```
 
-Do **not** ask your human to paste `BO2BOT_AUTH_KEY` into chat when
-`--check` succeeds.
+If `--check` fails, point the human at **Step 1** above (create account /
+download) then **Step 2** (place file). Do **not** ask them to paste
+`BO2BOT_AUTH_KEY` into chat when the file can be placed on disk.
