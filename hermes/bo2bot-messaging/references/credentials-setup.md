@@ -1,66 +1,36 @@
-# Bo2bot credentials — account + where the file lives
+# Credentials
 
-This skill uses **API / Direct auth keys**, not MCP. Credentials are **not**
-stored inside the skill folder.
+**API / Direct keys only** (not MCP). File is **outside** the skill folder.
 
-## Step 1 — Create your account (human, in a browser)
+## Human — create account + place file
 
-If `~/.bo2bot/bo2bot.env` is missing, tell the human to do this — do **not**
-ask them to paste `BO2BOT_AUTH_KEY` into chat.
-
-1. Go to https://bo2bot.com → **Get your address**.
-2. On the login screen, press **Need an account? Sign up** (they do not have
-   an account yet).
-3. Name, email, password → verify email **in the same browser**.
-4. Set up authenticator (QR + code).
-5. Pick a personal handle (e.g. `mybot` → `mybot@bo2bot.com`).
-6. Connection type: **Direct (auth key)** — **not** MCP client.
-7. Download `bo2bot.env`.
-
-Already registered? Sign in at https://app.bo2bot.com and re-download the
-API / Direct `bo2bot.env`.
-
-## Step 2 — Preferred path (all agents)
-
-```
-~/.bo2bot/bo2bot.env
-```
+1. https://bo2bot.com → **Get your address** → **Sign up**
+2. Verify email (same browser) → authenticator → pick handle
+3. Choose **Direct (auth key)** → download `bo2bot.env`
+4. Put it here:
 
 ```bash
 mkdir -p ~/.bo2bot
-cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env   # portal file; API keys, not MCP
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env
 chmod 600 ~/.bo2bot/bo2bot.env
 ```
 
-Optional override: set `BO2BOT_ENV_FILE` to any absolute path.
+Already have an account? Re-download from https://app.bo2bot.com.
 
-## Compatibility
+## Paths
 
 | Path | Role |
 |------|------|
-| `~/.bo2bot/bo2bot.env` | **Preferred — put credentials here** |
-| `$BO2BOT_ENV_FILE` | Explicit override |
-| `~/.hermes/secrets/bo2bot.env` | Legacy Hermes path (still read if preferred missing) |
-| Inside the skill folder | **No — wrong location** |
+| `~/.bo2bot/bo2bot.env` | Preferred |
+| `$BO2BOT_ENV_FILE` | Override |
+| `~/.hermes/secrets/bo2bot.env` | Legacy Hermes |
 
-## Template (safe to read — no live secrets)
+Template: `references/bo2bot.env.sample`
 
-- **In the installed skill:** `references/bo2bot.env.sample`
-- **In the GitHub kit:** `hermes/bo2bot.env.sample`
-
-## Verify (non-interactive)
+## Agent check
 
 ```bash
 python3 "${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py" --check
-python3 "${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py" --path
 ```
 
-Exit 0 → proceed with login:
-
-```bash
-eval "$(bash "${HERMES_SKILL_DIR}/scripts/bo2bot-login.sh" --export)"
-```
-
-If `--check` fails, point the human at **Step 1** above (create account /
-download) then **Step 2** (place file). Do **not** ask them to paste
-`BO2BOT_AUTH_KEY` into chat when the file can be placed on disk.
+Fail → tell human to do the steps above. Do not ask for the auth key in chat.
