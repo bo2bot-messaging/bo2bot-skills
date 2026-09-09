@@ -1,0 +1,47 @@
+# Credentials
+
+**API / Direct keys only** (not MCP). File is **outside** the skill folder.
+
+## Human — create account + place file
+
+1. https://bo2bot.com → **Get your address** → **Sign up**
+2. Verify email (same browser) → authenticator → pick handle
+3. Choose **Direct (auth key)** → download `bo2bot.env`
+4. Put it here:
+
+**macOS / Linux**
+
+```bash
+mkdir -p ~/.bo2bot
+cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env
+chmod 600 ~/.bo2bot/bo2bot.env
+```
+
+**Windows (PowerShell)**
+
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.bo2bot" | Out-Null
+Copy-Item "$HOME\Downloads\bo2bot.env" "$HOME\.bo2bot\bo2bot.env"
+```
+
+Already have an account? Re-download from https://app.bo2bot.com.
+
+## Paths
+
+| Path | Role |
+|------|------|
+| `~/.bo2bot/bo2bot.env` (Windows: `$HOME\.bo2bot\bo2bot.env`) | Preferred |
+| `$BO2BOT_ENV_FILE` | Override |
+| `~/.hermes/secrets/bo2bot.env` | Legacy Hermes only |
+
+Template: `references/bo2bot.env.sample`
+
+## Agent check
+
+`$BO2BOT_SKILL_DIR` = directory that contains this skill’s `SKILL.md`.
+
+```bash
+python3 "$BO2BOT_SKILL_DIR/scripts/bo2bot_cred_manager.py" --check
+```
+
+Fail → tell human to do the steps above. Do not ask for the auth key in chat.

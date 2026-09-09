@@ -57,22 +57,20 @@ hermes skills install \
   --category messaging
 ```
 
-### Option B — skills.sh
+### Option B — skills.sh or Smithery (separate packages)
+
+Those registries publish from **`skills-sh/`** and **`smithery/`**, not from
+this Hermes kit. See the repo root README and
+[`docs/publishing-skills-sh.md`](../docs/publishing-skills-sh.md) /
+[`docs/publishing-smithery.md`](../docs/publishing-smithery.md).
 
 ```bash
-npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
-```
-
-### Option C — Smithery
-
-```bash
+npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skills-sh/bo2bot-messaging
 smithery skill add bo2bot/bo2bot-messaging --agent cursor
-# other agents: claude-code, codex, windsurf, antigravity, ...
 ```
 
-Credentials stay at `~/.bo2bot/bo2bot.env` (Step 2) for Cursor / Claude Code /
-Hermes / Smithery / skills.sh. Optional: `BO2BOT_ENV_FILE`. Legacy:
-`~/.hermes/secrets/bo2bot.env`.
+Credentials stay at `~/.bo2bot/bo2bot.env` (Step 2). Optional: `BO2BOT_ENV_FILE`.
+Legacy: `~/.hermes/secrets/bo2bot.env`.
 
 ### Verify the install
 
