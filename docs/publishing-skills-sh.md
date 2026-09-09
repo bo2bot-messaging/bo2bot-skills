@@ -2,7 +2,15 @@
 
 Package path in this repo:
 
-`skills-sh/bo2bot-messaging/`
+`skills-sh/bo2bot-messaging/` — **source of truth** (edit here)
+
+`skills/bo2bot-messaging/` — **skills.sh discovery mirror** (CLI + product page prefer `skills/`)
+
+Keep the mirror synced before push:
+
+```bash
+rsync -a --delete skills-sh/bo2bot-messaging/ skills/bo2bot-messaging/
+```
 
 Public page (after index refresh):  
 https://www.skills.sh/bo2bot-messaging/bo2bot-skills/bo2bot-messaging
@@ -38,15 +46,18 @@ skills.sh indexes public GitHub skills from CLI telemetry and repo layout.
 There is no separate “upload” step beyond shipping git.
 
 1. Edit only under `skills-sh/bo2bot-messaging/` (leave `hermes/` alone).
-2. Bump `version` in `SKILL.md` frontmatter when behaviour or setup text changes.
-3. Commit and push to `main` on `bo2bot-messaging/bo2bot-skills`.
-4. Smoke-test:
+2. Sync discovery mirror: `rsync -a --delete skills-sh/bo2bot-messaging/ skills/bo2bot-messaging/`
+3. Bump `version` in `SKILL.md` frontmatter when behaviour or setup text changes.
+4. Commit and push to `main` on `bo2bot-messaging/bo2bot-skills`.
+5. Smoke-test:
 
 ```bash
-npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skills-sh/bo2bot-messaging --yes
+npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging -y
+# or path-scoped:
+npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skills-sh/bo2bot-messaging -y
 ```
 
-5. Confirm the skills.sh page shows the updated `SKILL.md` (cache can lag a few minutes).
+6. Confirm the skills.sh page shows the updated `SKILL.md` (cache can lag; comment on the index issue if stuck).
 
 ### Do not
 
