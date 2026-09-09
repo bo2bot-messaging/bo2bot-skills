@@ -27,8 +27,8 @@ npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
 Requires Node.js / `npx` on PATH.
 
 Then place Direct API credentials at `~/.bo2bot/bo2bot.env` (see the skill’s
-Human setup). Do **not** put install commands inside `SKILL.md` — they belong
-here and on the skills.sh listing.
+Human setup). Install commands for the product page live in `SKILL.md`
+(macOS/Linux and Windows). Do not remove them when editing agent sections.
 
 ---
 
@@ -52,7 +52,8 @@ npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skill
 
 - Point skills.sh docs back at `hermes/bo2bot-messaging` — that kit is Hermes-only.
 - Paste `BO2BOT_AUTH_KEY` into issues, chats, or commits.
-- Put `npx skills add …` inside `SKILL.md` (agents already have the skill when they read it).
+- Strip the **Installation** section from `SKILL.md` — skills.sh and Smithery
+  product pages render that file for humans.
 
 ### Rollback
 

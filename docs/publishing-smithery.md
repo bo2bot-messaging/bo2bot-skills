@@ -18,7 +18,8 @@ smithery skill add bo2bot/bo2bot-messaging --agent cursor
 Other agents: replace `cursor` with `claude-code`, `codex`, `windsurf`, etc.
 
 Then place Direct API credentials at `~/.bo2bot/bo2bot.env` (see the skill’s
-Human setup). API keys only — not MCP connector keys.
+Human setup). API keys only — not MCP connector keys. Install commands for
+the product page live in `SKILL.md` (macOS/Linux and Windows).
 
 ---
 
@@ -60,6 +61,8 @@ to `hermes/bo2bot-messaging`.
 
 - Reuse the Hermes kit folder as the Smithery source of truth.
 - Commit secrets or paste `BO2BOT_AUTH_KEY` into the Smithery UI.
+- Strip the **Installation** section from `SKILL.md` — the Smithery product
+  page renders that file for humans.
 - Change `name:` in frontmatter away from `bo2bot-messaging` (must match folder name).
 
 ### Rollback
