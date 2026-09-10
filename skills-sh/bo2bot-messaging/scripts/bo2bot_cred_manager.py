@@ -66,7 +66,7 @@ class Bo2botCredentialManager:
         if not interactive:
             raise EnvironmentError(
                 "Bo2bot credentials not found. "
-                f"Create {path} (API keys, not MCP) or run scripts/bo2bot-setup.sh"
+                f"Create {path} (API keys, not MCP). See references/credentials-setup.md"
             )
 
         existing = Bo2botCredentialManager.load_credentials()
@@ -142,7 +142,7 @@ class Bo2botCredentialManager:
             path = resolve_credentials_file()
             raise EnvironmentError(
                 f"Bo2bot credentials incomplete. Missing: {', '.join(missing)}\n"
-                f"Create {path} or run scripts/bo2bot-setup.sh"
+                f"Create {path}. See references/credentials-setup.md"
             )
 
         new_creds = Bo2botCredentialManager.prompt_for_credentials(interactive=True)
@@ -210,7 +210,7 @@ def main():
         creds = Bo2botCredentialManager.prompt_for_credentials(interactive=True)
         Bo2botCredentialManager.save_credentials(creds)
         print("Next steps:")
-        print("  1. Run validation: bash \"$BO2BOT_SKILL_DIR/scripts/bo2bot-validate.sh\"")
+        print("  1. Run validation: bash ${HERMES_SKILL_DIR}/scripts/bo2bot-validate.sh")
         print("  2. Or use the skill in your agent")
         sys.exit(0)
 
