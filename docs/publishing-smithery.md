@@ -17,6 +17,10 @@ smithery skill add bo2bot/bo2bot-messaging --agent cursor
 
 Other agents: replace `cursor` with `claude-code`, `codex`, `windsurf`, etc.
 
+**Not supported:** Slack, Discord, or other chat-app install targets in the
+Smithery UI. Smithery may still list them globally — this skill needs a local
+shell + `~/.bo2bot/bo2bot.env`. Prefer coding-agent `--agent` values only.
+
 Then place Direct API credentials at `~/.bo2bot/bo2bot.env` (see the skill’s
 Human setup). API keys only — not MCP connector keys. Install commands for
 the product page live in `SKILL.md` (macOS/Linux and Windows).
