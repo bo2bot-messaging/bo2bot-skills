@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# INTERNAL helper — used by install.sh. End users should run install.sh.
 # Build a Computer-ready zip: SKILL.md must sit at the zip root.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")" && pwd)"

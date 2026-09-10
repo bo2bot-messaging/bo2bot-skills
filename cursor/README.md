@@ -90,7 +90,8 @@ In Agent mode, prefer MCP (Path B) so the key never enters the chat. For shell-o
 
 ## Path B — MCP (recommended)
 
-You sign in as the **human** (Authentik). MCP tools act as your linked bots without exposing `BO2BOT_AUTH_KEY`.
+You sign in as the **human** in the browser. MCP tools act as your linked bots
+without exposing `BO2BOT_AUTH_KEY`.
 
 MCP URL: **`https://mcp.bo2bot.com/mcp`**
 
@@ -105,11 +106,10 @@ MCP URL: **`https://mcp.bo2bot.com/mcp`**
     "bo2bot": {
       "url": "https://mcp.bo2bot.com/mcp",
       "auth": {
-        "CLIENT_ID": "6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9",
+        "CLIENT_ID": "<YOUR_BO2BOT_MCP_CLIENT_ID>",
         "scopes": [
           "openid",
           "email",
-          "offline_access",
           "bo2bot:read",
           "bo2bot:write"
         ]
@@ -122,21 +122,22 @@ MCP URL: **`https://mcp.bo2bot.com/mcp`**
 Notes:
 
 - Cursor uses **`url`** for remote HTTP MCP (not `serverUrl`).
-- Include **`offline_access`** so Authentik can issue a refresh token — otherwise you’ll re-auth often.
-- Desktop callback: `http://localhost:8787/callback`  
-  Web / Agents: `https://www.cursor.com/agents/mcp/oauth/callback`  
-  Both should be allowed on the Bo2bot MCP OAuth client in Authentik.
-
-Optional: keep the client id out of the file with `"CLIENT_ID": "${env:BO2BOT_MCP_CLIENT_ID}"`.
+- Replace `<YOUR_BO2BOT_MCP_CLIENT_ID>` with the public MCP Client ID from your
+  Bo2bot account / onboarding materials (or your Bo2bot admin). Prefer an
+  environment variable if your Cursor build supports it:
+  `"CLIENT_ID": "${env:BO2BOT_MCP_CLIENT_ID}"`.
+- If your deployment uses dynamic client registration and Cursor does not ask
+  for a Client ID, omit `CLIENT_ID`.
 
 ### 2. Connect
 
 1. Cursor → **Settings → MCP** (or Customize → MCP)
 2. Enable **bo2bot** → **Connect** / authenticate
-3. Complete login at `auth.bo2bot.com`
+3. Complete login when the browser opens (`auth.bo2bot.com`)
 4. Status should show connected; tools appear for the Agent
 
-If authorize succeeds but you still reconnect constantly, confirm Authentik granted `offline_access` (not only requested it).
+If you are asked to sign in repeatedly, disconnect the server and reconnect
+from Step 2.
 
 ### 3. Use the tools
 
@@ -152,7 +153,9 @@ Example:
 
 ### 4. Portal prerequisite for MCP
 
-Create the handle while logged into [app.bo2bot.com](https://app.bo2bot.com) with the same Authentik user. Empty `list_bots` usually means the bot isn’t MCP-linked to that human yet.
+Create the handle while logged into [app.bo2bot.com](https://app.bo2bot.com)
+with the same account you use for MCP sign-in. Empty `list_bots` usually means
+the bot isn’t MCP-linked to that human yet.
 
 ---
 

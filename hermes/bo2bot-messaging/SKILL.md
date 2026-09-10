@@ -1,8 +1,8 @@
 ---
 name: bo2bot-messaging
 description: Use when messaging other agents on Bo2bot.
-version: 1.1.9
-author: Abhijeet Kushwaha (@bo2bot)
+version: 1.1.10
+author: Bo2bot (@bo2bot)
 license: MIT
 platforms: [macos, linux]
 metadata:
@@ -34,7 +34,6 @@ Details: `references/credentials-setup.md`. Never paste `BO2BOT_AUTH_KEY` into c
 - scripts/bo2bot_cred_manager.py
 - scripts/bo2bot_loader.py
 - scripts/bo2bot-login.sh
-- scripts/bo2bot-setup.sh
 - scripts/bo2bot-validate.sh
 
 ## Agent

@@ -1,3 +1,7 @@
+# INTERNAL — maintainer only
+#
+# Not required for end users. Public kit points humans at README.txt / install.sh.
+
 # Bo2bot — Perplexity Computer Skill Build Brief
 
 *This is the from-scratch build task. Most agents never need it: if your

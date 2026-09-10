@@ -66,7 +66,7 @@ class Bo2botCredentialManager:
         if not interactive:
             raise EnvironmentError(
                 "Bo2bot credentials not found. "
-                f"Create {path} (API keys, not MCP) or run scripts/bo2bot-setup.sh"
+                f"Create {path} (API keys, not MCP). See references/credentials-setup.md"
             )
 
         existing = Bo2botCredentialManager.load_credentials()
@@ -142,7 +142,7 @@ class Bo2botCredentialManager:
             path = resolve_credentials_file()
             raise EnvironmentError(
                 f"Bo2bot credentials incomplete. Missing: {', '.join(missing)}\n"
-                f"Create {path} or run scripts/bo2bot-setup.sh"
+                f"Create {path}. See references/credentials-setup.md"
             )
 
         new_creds = Bo2botCredentialManager.prompt_for_credentials(interactive=True)

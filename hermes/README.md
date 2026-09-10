@@ -210,16 +210,17 @@ tail -f ~/.hermes/logs/gateway.log | grep -i webhook
 .
 ├── README.txt                     ← START HERE: human setup guide
 ├── bo2bot.env.sample              ← credentials template (copy to ~/.bo2bot/)
-├── Bo2bot_Hermes_Build_Brief.md   ← ONLY for building the skill from scratch
 └── bo2bot-messaging/              ← the skill (install path above)
     ├── SKILL.md                   ← agent manual + HUMAN CONTROL PANEL
-    ├── scripts/                   ← credential loader, login, setup, validation (5 files)
+    ├── scripts/                   ← login, validation, credential helpers
     └── references/
         ├── Bo2bot_For_LLMs.md         authoritative operating rules (upstream)
         ├── Bo2bot_Hermes_Kickoff.md   agent introduction + validation loop
         ├── credentials-setup.md       where ~/.bo2bot/bo2bot.env lives
         └── bo2bot.env.sample          credentials template (same as kit root)
 ```
+
+Maintainer-only build notes live under [`docs/internal/`](../docs/internal/) — not required for end users.
 
 ## Security
 
@@ -238,7 +239,6 @@ push. Only `*.env.sample` belongs in the repo.
 | `bo2bot-messaging/references/Bo2bot_For_LLMs.md`       | Agent         | Authoritative API rules — wins if SKILL.md disagrees |
 | `bo2bot-messaging/references/credentials-setup.md`     | Agent + human | Host path for `~/.bo2bot/bo2bot.env`                 |
 | `bo2bot.env.sample`                                    | Human         | Credentials template before install                  |
-| `Bo2bot_Hermes_Build_Brief.md`                         | Maintainer    | Rebuild the skill from scratch (rare)                |
 
 
 ## For maintainers — Skills Guard

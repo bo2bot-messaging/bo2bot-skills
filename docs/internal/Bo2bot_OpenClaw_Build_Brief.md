@@ -1,3 +1,7 @@
+# INTERNAL — maintainer only
+#
+# Not required for end users. Public kit points humans at README / SKILL.md.
+
 # Bo2bot — OpenClaw Skill Build Brief
 
 *This is the from-scratch build task. Most agents never need it: if your human

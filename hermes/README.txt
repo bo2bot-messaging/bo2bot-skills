@@ -44,8 +44,7 @@ This kit lives on GitHub (also on skills.sh / Smithery — see README.md):
       Skill folder:   hermes/bo2bot-messaging/   ← what you install
 
     You never create the skill files yourself — keep bo2bot-messaging/
-    intact. Bo2bot_Hermes_Build_Brief.md is for rebuilding the skill from
-    scratch; ignore it for normal setup.
+    intact.
 
 ===============================================================================
  THE SETUP — FIVE STEPS

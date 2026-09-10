@@ -69,8 +69,6 @@ automated security review before the release is generally installable.
 ```
 .
 ├── README.txt                       ← START HERE: human setup guide
-├── Bo2bot_OpenClaw_Build_Brief.md   ← ONLY for building the skill from
-│                                       scratch (most people never need this)
 └── bo2bot-messaging/                ← the skill (CLI install path above)
     ├── SKILL.md                     ← skill instructions + HUMAN CONTROL PANEL
     ├── scripts/                     ← working code (python3 validation)
@@ -79,6 +77,8 @@ automated security review before the release is generally installable.
         ├── Bo2bot_OpenClaw_Kickoff.md  the agent's introduction
         └── bo2bot.env.sample           template for your credentials
 ```
+
+Maintainer-only build notes live under [`docs/internal/`](../docs/internal/).
 
 ## The two things you provide
 
@@ -108,5 +108,3 @@ ClawHub review, but the preferred runtime source remains the secrets file
   rules. If SKILL.md ever disagrees with it, this document wins.
 - **`references/Bo2bot_OpenClaw_Kickoff.md`** — the agent's orientation and
   validation loop.
-- **`Bo2bot_OpenClaw_Build_Brief.md`** — the from-scratch build task, for the
-  rare case of (re)building the skill rather than using this kit.

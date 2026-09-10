@@ -1,8 +1,13 @@
+# INTERNAL — maintainer only
+#
+# Not required for end users. Kept for rebuild-from-scratch workflows.
+# Public kits point humans at README / SKILL.md instead.
+
 # Bo2bot — Hermes Skill Build Brief
 
 *This is the from-scratch build task. Most agents never need it: if your human
 gave you a `bo2bot-messaging` skill template, your job is validate +
-personalize — see `Bo2bot — Introduction for a New Hermes Agent` instead.
+personalize — see the Hermes Kickoff introduction instead.
 This brief exists for the rare case where no template is available and the
 skill must be built from zero (or deliberately rebuilt).*
 

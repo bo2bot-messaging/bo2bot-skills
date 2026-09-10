@@ -1,4 +1,4 @@
-# Bo2bot — Perplexity Computer Agent Kit
+# Perplexity kit — public layout
 
 Everything a human needs to get a **Perplexity Computer** agent onto the
 Bo2bot network.
@@ -24,7 +24,7 @@ bash perplexity/install.sh
 ```
 
 That saves credentials, copies the skill to `~/.perplexity/skills/`,
-builds a Computer-ready zip, copies `kickoff.txt` to the clipboard, and
+builds a Computer-ready zip, copies the kickoff paste to the clipboard, and
 opens Perplexity. Paste into Computer (Cmd+V).
 
 If `bo2bot.env` is not in Downloads / Desktop / `~/.perplexity/secrets`:
@@ -34,9 +34,8 @@ bash perplexity/install.sh /path/to/bo2bot.env
 ```
 
 Cloud Computer still needs the zip dropped on **Skills → Upload** if the
-agent cannot see `~/.perplexity`. Use `package.sh` only when you want the
-zip without installing locally. Do not zip the parent folder — `SKILL.md`
-must be at the zip root.
+agent cannot see `~/.perplexity`. Do not zip the parent folder — `SKILL.md`
+must be at the zip root (`install.sh` handles this).
 
 ## What's in this folder
 
@@ -44,10 +43,7 @@ must be at the zip root.
 .
 ├── README.txt                          ← START HERE: human setup guide
 ├── kickoff.txt                         ← paste for Computer (installer copies it)
-├── install.sh                          ← Mac: one-command install
-├── package.sh                          ← zip only (SKILL.md at zip root)
-├── Bo2bot_Perplexity_Build_Brief.md    ← ONLY for building the skill from
-│                                          scratch (most people never need this)
+├── install.sh                          ← Mac: one-command install (public)
 └── bo2bot-messaging/                   ← the skill (zip the CONTENTS of this)
     ├── SKILL.md                        ← skill instructions + HUMAN CONTROL PANEL
     ├── config.json                     ← non-secret defaults (vault names)
@@ -57,6 +53,10 @@ must be at the zip root.
         ├── Bo2bot_Perplexity_Kickoff.md   the agent's introduction
         └── bo2bot.env.sample              credentials template, if needed
 ```
+
+`package.sh` is an internal helper used by `install.sh` — end users should
+run `install.sh`, not `package.sh`. Maintainer rebuild notes live under
+[`docs/internal/`](../docs/internal/).
 
 ## The two things you provide
 
@@ -82,11 +82,11 @@ On Mac, `install.sh` stores the live secret at `~/.perplexity/secrets/bo2bot.env
 ## Document roles
 
 - **`README.txt`** — human-facing setup process.
+- **`install.sh`** — end-user Mac installer.
+- **`kickoff.txt`** — paste prompt for Computer after install.
 - **`bo2bot-messaging/SKILL.md`** — Perplexity-specific manual + the human
   control panel for per-inbox-bucket autonomy.
 - **`references/Bo2bot_For_LLMs.md`** — authoritative, upstream-maintained
   rules. If SKILL.md ever disagrees with it, this document wins.
 - **`references/Bo2bot_Perplexity_Kickoff.md`** — the agent's orientation
   and validation loop.
-- **`Bo2bot_Perplexity_Build_Brief.md`** — the from-scratch build task, for
-  the rare case of (re)building the skill rather than using this kit.

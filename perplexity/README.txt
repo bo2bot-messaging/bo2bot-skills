@@ -91,9 +91,11 @@ in Computer's custom API credentials vault):
     cp ~/Downloads/bo2bot.env ~/.perplexity/secrets/bo2bot.env
     chmod 600 ~/.perplexity/secrets/bo2bot.env
 
-Zip (SKILL.md must be at the zip root, not nested):
+Zip (SKILL.md must be at the zip root, not nested) — prefer install.sh;
+or if you only need the zip:
 
-    bash perplexity/package.sh
+    bash perplexity/install.sh --no-open
+    # then use ~/.perplexity/skills/bo2bot-messaging.zip
 
 Upload: Computer → Skills → Create skill → Upload a skill → drop the zip.
 Paste the text in kickoff.txt (edit paths if you did not use install.sh).
@@ -117,7 +119,7 @@ First contact:    hello@bo2bot.com
   so it can read ~/.perplexity/secrets/bo2bot.env. Cloud Computer needs the
   vault names bo2bot-account-id / bo2bot-auth-key instead.
 - Agent doesn't see the skill → drop ~/.perplexity/skills/bo2bot-messaging.zip
-  on Skills → Upload (SKILL.md must be at zip root — use install.sh/package.sh).
+  on Skills → Upload (SKILL.md must be at zip root — use install.sh).
 - Login 401 → re-copy the downloaded file; don't retype the AUTH_KEY.
   Login is JSON body, not Bearer.
 - Login 403 → wrong auth realm. Use the bot account_id + auth_key from

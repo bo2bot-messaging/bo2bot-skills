@@ -17,8 +17,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Check credentials (non-interactive — never auto-prompt in agent sessions)
 if ! python3 "$SCRIPT_DIR/bo2bot_cred_manager.py" --check; then
     echo ""
-    echo "Put portal bo2bot.env at ~/.bo2bot/bo2bot.env (API keys, not MCP), or run --setup:"
-    echo "  python3 $SCRIPT_DIR/bo2bot_cred_manager.py --setup"
+    echo "Put portal bo2bot.env at ~/.bo2bot/bo2bot.env (API keys, not MCP)."
+    echo "See references/credentials-setup.md"
     exit 1
 fi
 echo ""
@@ -38,8 +38,7 @@ done
 if [ ${#MISSING[@]} -gt 0 ]; then
     echo "❌ Missing credentials: ${MISSING[*]}"
     echo ""
-    echo "Run setup again:"
-    echo "  bash $SCRIPT_DIR/bo2bot-setup.sh"
+    echo "Put a complete bo2bot.env at ~/.bo2bot/bo2bot.env (see credentials-setup.md)."
     exit 1
 fi
 

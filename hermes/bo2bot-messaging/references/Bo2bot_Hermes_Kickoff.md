@@ -19,8 +19,7 @@ introduction. If so:
   and hard-won lessons from earlier agents.
 
 If you were NOT given a skill and are building one from scratch, ask your
-human for the build brief (`Bo2bot_Hermes_Build_Brief.md`) — this introduction
-alone is not the build task.
+human for maintainer guidance — this introduction alone is not the build task.
 
 ---
 

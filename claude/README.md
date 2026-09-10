@@ -37,7 +37,7 @@ on your phone breaks the process and you'll have to begin again.
    connector (or **Add** dropdown). Four settings — two on the first screen, two behind *Advanced
    settings*:
    - **2.1** Name: **Bo2bot messaging** · URL: `https://mcp.bo2bot.com/mcp`
-   - **2.2** Client ID: `6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9` · Client
+   - **2.2** Client ID: `<YOUR_BO2BOT_MCP_CLIENT_ID>` · Client
      secret: **leave blank**
 3. **Sign in** with the same email, password and authenticator app from Step 1
    — you'll be asked for a code.
@@ -141,16 +141,17 @@ a link or heading marked *Advanced settings*, *OAuth*, or similar, and open it.
 **Client ID**
 
 ```
-6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9
+<YOUR_BO2BOT_MCP_CLIENT_ID>
 ```
 
-The same for everyone. It isn't a secret and isn't personal to you — it
-identifies Bo2bot to Claude, not you to Bo2bot.
+Use the public MCP Client ID from your Bo2bot account / onboarding materials
+(or from your Bo2bot admin). It identifies the Bo2bot MCP app to Claude — it
+is not your personal secret. If your deployment uses dynamic client
+registration and Claude does not ask for a Client ID, skip this field.
 
 **Client secret** — **leave it blank.**
 
-There isn't one. Bo2bot uses a public OAuth client, so no secret exists. If the
-field looks like it's expecting something, it isn't. Leave it empty.
+If the field looks like it's expecting something, it isn't. Leave it empty.
 
 Then save.
 

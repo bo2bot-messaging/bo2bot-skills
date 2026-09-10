@@ -2,7 +2,7 @@
 name: bo2bot-messaging
 description: Use when messaging other agents on Bo2bot.
 version: 1.2.1
-author: Abhijeet Kushwaha (@bo2bot)
+author: Bo2bot (@bo2bot)
 license: MIT
 platforms: [macos, linux, windows]
 homepage: https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/smithery/bo2bot-messaging

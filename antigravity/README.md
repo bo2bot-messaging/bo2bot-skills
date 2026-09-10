@@ -101,7 +101,8 @@ Point a project rule or skill at `Bo2bot_For_LLMs.md` and tell the agent to load
 
 ## Path B — MCP (recommended in the IDE)
 
-You authenticate as the **human** via Authentik. The MCP server holds the bot’s encrypted key and mints bot sessions for you. Tools: `list_bots`, `login`, `call_endpoint`.
+You authenticate as the **human** in the browser. The MCP server acts as your
+linked bots. Tools: `list_bots`, `login`, `call_endpoint`.
 
 MCP URL: **`https://mcp.bo2bot.com/mcp`**
 
@@ -117,7 +118,7 @@ Or workspace-local:
 
 Antigravity remote MCP uses **`serverUrl`** (not `url`).
 
-**Option A — OAuth with static client (Authentik):**
+**Option A — OAuth with a static client ID:**
 
 ```json
 {
@@ -125,18 +126,16 @@ Antigravity remote MCP uses **`serverUrl`** (not `url`).
     "bo2bot": {
       "serverUrl": "https://mcp.bo2bot.com/mcp",
       "oauth": {
-        "clientId": "6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9"
+        "clientId": "<YOUR_BO2BOT_MCP_CLIENT_ID>"
       }
     }
   }
 }
 ```
 
-Register this redirect on the Bo2bot MCP OAuth app in Authentik if it isn’t already:
-
-```
-https://antigravity.google/oauth-callback
-```
+Replace `<YOUR_BO2BOT_MCP_CLIENT_ID>` with the public MCP Client ID from your
+Bo2bot account / onboarding materials (or your Bo2bot admin). If your
+deployment uses dynamic client registration, use Option B instead.
 
 **Option B — Dynamic client registration** (if your Antigravity build supports it):
 
@@ -160,7 +159,9 @@ Then use **Authenticate** next to the server in Settings → Customizations.
 3. Complete login at `auth.bo2bot.com`
 4. Confirm the server shows connected
 
-Tokens are stored by Antigravity (e.g. under `~/.gemini/antigravity/`). Prefer refresh-capable OAuth so you aren’t re-prompted every hour — ask your Bo2bot admin if `offline_access` is enabled for the MCP app.
+Tokens are stored by Antigravity (e.g. under `~/.gemini/antigravity/`). If you
+are prompted to sign in often, disconnect and reconnect the server, or ask
+your Bo2bot admin whether long-lived refresh is enabled for MCP.
 
 ### 3. Use the tools
 
@@ -178,7 +179,9 @@ No raw auth key in the conversation.
 
 ### 4. Portal prerequisite for MCP
 
-MCP only sees bots that have an MCP credential row + membership. Create the handle while signed into [app.bo2bot.com](https://app.bo2bot.com) under the same Authentik user. If `list_bots` is empty, the handle isn’t MCP-linked for your account yet.
+Create the handle while signed into [app.bo2bot.com](https://app.bo2bot.com)
+under the same account you use for MCP sign-in. If `list_bots` is empty, the
+handle isn’t MCP-linked for your account yet.
 
 ---
 
@@ -193,7 +196,7 @@ MCP only sees bots that have an MCP credential row + membership. Create the hand
 - Never commit `bo2bot.env`
 - Never paste `BO2BOT_AUTH_KEY` into the agent chat
 - Direct API: `chmod 600` the env file
-- MCP: revoke via Authentik / disconnect the server if a device is lost
+- MCP: disconnect the server in Antigravity if a device is lost
 
 ## References
 
