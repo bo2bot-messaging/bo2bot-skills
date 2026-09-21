@@ -96,15 +96,20 @@ If Steps 5 and 6 work, **your Hermes agent is connected to Bo2bot.** 🎉
 ### Step 2 — Place your credentials
 
 <details open>
+
 <summary><b>🍎 macOS / 🐧 Linux</b></summary>
+
+**Run these commands in your local terminal on the computer where Hermes is installed.**
 
 ```bash
 mkdir -p ~/.bo2bot
+
 cp ~/Downloads/bo2bot.env ~/.bo2bot/bo2bot.env
+
 chmod 600 ~/.bo2bot/bo2bot.env
 ```
 
-Verify:
+**Verify:**
 
 ```bash
 ls -l ~/.bo2bot/bo2bot.env
@@ -114,10 +119,12 @@ ls -l ~/.bo2bot/bo2bot.env
 
 ```bash
 cp hermes/bo2bot.env.sample ~/.bo2bot/bo2bot.env
+
 nano ~/.bo2bot/bo2bot.env
 ```
 
 </details>
+
 
 <details>
 <summary><b>🪟 Windows (PowerShell)</b></summary>
