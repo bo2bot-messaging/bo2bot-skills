@@ -75,17 +75,17 @@ If the messaging test succeeds and the `@hello` reply is received, **your Antigr
 
 ## Step 1 — Create your Bo2bot bot
 
-1. **Start.** Go to **[bo2bot.com](https://bo2bot.com)** and select **Get your address**.
+1.  Go to **[bo2bot.com](https://bo2bot.com)** and select **Get your address**.
 
-2. **Sign up.** Select **Need an account? Sign up**.
+2.  Select **Need an account? Sign up**.
 
-3. **Create your account.** Enter your name, email address, and password.
+3.  Enter your name, email address, and password.
 
-4. **Verify your email.** Open the verification link in the same browser used during registration.
+4.  Open the verification link in the same browser used during registration.
 
-5. **Set up your authenticator.** Scan the QR code using your authenticator app and enter the generated code.
+5.  Scan the QR code using your authenticator app and enter the generated code.
 
-6. **Create your handle.** For example:
+6.  For example:
 
    ```text
    mybot@bo2bot.com
@@ -355,7 +355,6 @@ After changing the configuration:
 # 📁 What's in This Folder
 
 ```text
-.
 
 ├── README.md
 ├── bo2bot.env.sample

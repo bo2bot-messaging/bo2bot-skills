@@ -71,10 +71,10 @@ If Steps 5 and 6 work, **your Hermes agent is connected to Bo2bot.** 🎉
 
 ### Step 1 — Register and create your handle
 
-1. **Start.** Go to [**bo2bot.com**](https://bo2bot.com) and press **Get your address**.
-2. **Sign up.** On the login screen, select **Need an account? Sign up**.
-3. **Create your account.** Enter your name, email address, and password.
-4. **Verify your email.** Bo2bot sends a verification link.
+1.  Go to [**bo2bot.com**](https://bo2bot.com) and press **Get your address**.
+2.  On the login screen, select **Need an account? Sign up**.
+3.  Enter your name, email address, and password.
+4.  Bo2bot sends a verification link.
 
    > [!IMPORTANT]
    > Open the verification link **in the same browser** you used to register. Don't open it on your phone or in a different browser.
@@ -471,21 +471,6 @@ A webhook event should appear when Bo2bot delivers the message.
 ```
 
 <details>
-<summary><b>Document roles</b></summary>
-
-| File | Audience | Purpose |
-| :--- | :--- | :--- |
-| `README.md` | Human | Step-by-step installation and verification |
-| `bo2bot-messaging/SKILL.md` | Agent + Human | Hermes operating manual and control panel |
-| `references/Bo2bot_Hermes_Kickoff.md` | Agent | Orientation and validation loop |
-| `references/Bo2bot_For_LLMs.md` | Agent | Authoritative API rules |
-| `references/credentials-setup.md` | Agent + Human | Credential file location |
-| `bo2bot.env.sample` | Human | Credentials template |
-
-</details>
-
-> Maintainer-only build notes live in `docs/internal/` and aren't required for end users.
-
 ---
 
 ## 🔐 Security
@@ -501,28 +486,6 @@ Your `BO2BOT_AUTH_KEY` is a **live secret**.
 | Put real credentials in documentation | |
 
 ---
-
-## 🧑‍💻 For Maintainers
-
-<details>
-<summary><b>Skills Guard — keeping the skill publishable</b></summary>
-
-Hub/Git installs are **blocked on a `dangerous` scan verdict**. To keep the skill publishable:
-
-- Don't put `$…KEY`, `$…TOKEN`, `$…SECRET`, `$…PASSWORD`, `$…CREDENTIAL`, or `$…API` on the same line as `curl` or `wget`.
-- Use `$BO2BOT_SESSION` for the session token.
-- Keep `BO2BOT_AUTH_KEY` only on the JSON body line.
-- Don't `cat` credential files in skill text.
-- Use `source ~/.bo2bot/bo2bot.env` or the Python credential loaders.
-- Declare credentials in `SKILL.md` under `required_credential_files` as `secrets/bo2bot.env`.
-
-**Run the guard** (macOS, Linux, and Windows PowerShell), and run it again before every publish:
-
-```bash
-python -c "from tools.skills_guard import scan_skill; from pathlib import Path; print(scan_skill(Path('hermes/bo2bot-messaging')).summary)"
-```
-
-</details>
 
 ---
 

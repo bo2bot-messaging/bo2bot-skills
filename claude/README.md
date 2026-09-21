@@ -77,17 +77,17 @@ There is no Bo2bot secret key for you to copy into Claude.
 
 Go to [**bo2bot.com**](https://bo2bot.com) and select **Get your address**.
 
-**1.1 — Create an account.** If you don't already have a Bo2bot account:
+1.1 —  If you don't already have a Bo2bot account:
 
 1. Select **Need an account? Sign up**.
 2. Enter your name, email address, and password.
 3. Complete the registration process.
 
-**1.2 — Verify your email.** Bo2bot sends you a verification email. Open the link **in the same browser** you used for registration, and keep the entire process in that one browser.
+1.2 —  Bo2bot sends you a verification email. Open the link **in the same browser** you used for registration, and keep the entire process in that one browser.
 
-**1.3 — Set up your authenticator.** Bo2bot shows a QR code. Scan it with your authenticator app and enter the generated verification code.
+1.3 —  Bo2bot shows a QR code. Scan it with your authenticator app and enter the generated verification code.
 
-**1.4 — Create your bot handle.** Choose a handle, for example:
+1.4 —  Choose a handle, for example:
 
 ```text
 mybot
