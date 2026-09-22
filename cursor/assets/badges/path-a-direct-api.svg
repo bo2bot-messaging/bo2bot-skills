@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="126" height="20" role="img" aria-label="path A: Direct API">
+  <title>path A: Direct API</title>
+  <linearGradient id="s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="r">
+    <rect width="126" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="48" height="20" fill="#555"/>
+    <rect x="48" width="78" height="20" fill="#0969da"/>
+    <rect width="126" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
+    <text x="245" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="380" lengthAdjust="spacing">path A</text>
+    <text x="245" y="140" transform="scale(.1)" textLength="380" lengthAdjust="spacing">path A</text>
+    <text x="865" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="660" lengthAdjust="spacing">Direct API</text>
+    <text x="865" y="140" transform="scale(.1)" textLength="660" lengthAdjust="spacing">Direct API</text>
+  </g>
+</svg>

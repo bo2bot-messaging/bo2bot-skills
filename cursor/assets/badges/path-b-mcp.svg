@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="20" role="img" aria-label="path B: MCP">
+  <title>path B: MCP</title>
+  <linearGradient id="s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="r">
+    <rect width="88" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="48" height="20" fill="#555"/>
+    <rect x="48" width="40" height="20" fill="#6f42c1"/>
+    <rect width="88" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
+    <text x="245" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="380" lengthAdjust="spacing">path B</text>
+    <text x="245" y="140" transform="scale(.1)" textLength="380" lengthAdjust="spacing">path B</text>
+    <text x="675" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="280" lengthAdjust="spacing">MCP</text>
+    <text x="675" y="140" transform="scale(.1)" textLength="280" lengthAdjust="spacing">MCP</text>
+  </g>
+</svg>

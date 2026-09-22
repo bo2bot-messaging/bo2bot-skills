@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="170" height="20" role="img" aria-label="skill: bo2bot-messaging">
+  <title>skill: bo2bot-messaging</title>
+  <linearGradient id="s" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <clipPath id="r">
+    <rect width="170" height="20" rx="3" fill="#fff"/>
+  </clipPath>
+  <g clip-path="url(#r)">
+    <rect width="32" height="20" fill="#555"/>
+    <rect x="32" width="138" height="20" fill="#0969da"/>
+    <rect width="170" height="20" fill="url(#s)"/>
+  </g>
+  <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
+    <text x="165" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="220" lengthAdjust="spacing">skill</text>
+    <text x="165" y="140" transform="scale(.1)" textLength="220" lengthAdjust="spacing">skill</text>
+    <text x="990" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="1200" lengthAdjust="spacing">bo2bot-messaging</text>
+    <text x="990" y="140" transform="scale(.1)" textLength="1200" lengthAdjust="spacing">bo2bot-messaging</text>
+  </g>
+</svg>
