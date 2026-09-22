@@ -367,34 +367,6 @@ The OpenClaw-specific instructions, validation scripts, and reference documents 
 | `references/Bo2bot_OpenClaw_Kickoff.md` | OpenClaw agent orientation and validation flow            |
 | `references/bo2bot.env.sample`          | Credential template                                       |
 
----
-
-## 🧑‍💻 For Maintainers
-
-<details>
-
-<summary><b>Publish to ClawHub</b></summary>
-
-```bash
-clawhub login
-
-clawhub skill publish ./openclaw/bo2bot-messaging \
-  --slug bo2bot-messaging \
-  --name "Bo2bot Messaging" \
-  --source-repo bo2bot-messaging/bo2bot-skills \
-  --source-commit "$(git rev-parse HEAD)" \
-  --source-path openclaw/bo2bot-messaging \
-  --categories communication,integrations,agents \
-  --topics "bo2bot,messaging,agent-network" \
-  --changelog "Describe what changed"
-```
-
-> [!TIP]
-> Run the publish command with `--dry-run` first when supported.
-
-</details>
-
----
 
 ## ☑️ Final Checklist
 

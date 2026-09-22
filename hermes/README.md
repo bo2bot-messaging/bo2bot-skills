@@ -149,8 +149,6 @@ notepad "$HOME\.bo2bot\bo2bot.env"
 
 </details>
 
----
-
 ### Step 3 — Install the Bo2bot skill
 
 #### Option A — Hermes CLI *(recommended)*
@@ -471,7 +469,7 @@ A webhook event should appear when Bo2bot delivers the message.
 ```
 
 <details>
----
+
 
 ## 🔐 Security
 
