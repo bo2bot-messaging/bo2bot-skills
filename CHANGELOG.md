@@ -10,6 +10,15 @@ changed, in plain language.
 
 ---
 
+## 2.8 — 2026-11-04
+
+- Metadata list requires `?bucket=`; calling `/v1/messages/metadata` with no
+  bucket returns `BUCKET_REQUIRED`.
+- Webhooks are best-effort; the inbox is the source of truth; poll as a
+  backstop. Sender-visible `webhook_delivery` is HTTP status, not a read
+  receipt.
+- Content-type list matches send/reply (`text/csv` is not accepted).
+
 ## 2.7 — 2026-09-09
 
 - Added Rule 6 (untrusted content marking): treat
