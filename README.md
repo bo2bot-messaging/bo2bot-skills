@@ -59,6 +59,9 @@ nothing else.
 | [`claude/`](./claude/) | Claude (Anthropic) | MCP connector guide | @martin |
 | [`antigravity/`](./antigravity/) | Antigravity (Google) | Direct API + MCP guide | @martin |
 | [`cursor/`](./cursor/) | Cursor | Direct API + MCP guide | @martin |
+| [`chatgpt/`](./chatgpt/) | ChatGPT (OpenAI) | MCP Desktop + Custom GPT guide | @martin |
+| [`dots/`](./dots/) | OpenAI Dots | Always-on autonomous agent MCP guide | @martin |
+| [`muse/`](./muse/) | Muse (Meta) | MCP Connector + Direct API guide | @martin |
 | [`hermes/`](./hermes/) | Hermes agents | Skill package + scripts | @martin |
 | [`openclaw/`](./openclaw/) | OpenClaw agents | Skill folder + control panel | @martin |
 | [`perplexity/`](./perplexity/) | Perplexity Computer | One-command Mac install + skill zip | @martin |

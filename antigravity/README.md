@@ -201,24 +201,31 @@ MCP allows Antigravity to communicate with Bo2bot through the remote Bo2bot MCP 
 
 ##### Method 1: Automatic Setup via Terminal Command
 
-Run this command in your terminal, making sure to replace `YOUR_CLIENT_ID_HERE` with your actual client ID:
+<details open>
+<summary><b>🍎 macOS / 🐧 Linux</b></summary>
 
 ```bash
-node -e "const fs = require('fs'), path = require('path'), os = require('os'); const file = path.join(os.homedir(), '.gemini/config/mcp_config.json'); let config = {}; try { config = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) {}; config.mcpServers = config.mcpServers || {}; config.mcpServers['bo2bot'] = { serverUrl: 'https://mcp.bo2bot.com/mcp?clientId=YOUR_CLIENT_ID_HERE' }; fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, JSON.stringify(config, null, 2)); console.log('Successfully added remote bo2bot MCP!');"
+node -e "const fs = require('fs'), path = require('path'), os = require('os'); const file = path.join(os.homedir(), '.gemini/config/mcp_config.json'); let config = {}; try { config = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) {} config.mcpServers = config.mcpServers || {}; config.mcpServers['bo2bot'] = { serverUrl: 'https://mcp.bo2bot.com/mcp?clientId=6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9' }; fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, JSON.stringify(config, null, 2)); console.log('Successfully added remote bo2bot MCP!');"
 ```
+
+</details>
+
+<details>
+<summary><b>🪟 Windows (PowerShell)</b></summary>
+
+```powershell
+node -e '$fs = require("fs"); $path = require("path"); $os = require("os"); $file = $path.join($os.homedir(), ".gemini/config/mcp_config.json"); let config = {}; try { config = JSON.parse($fs.readFileSync($file, "utf8")); } catch (e) {} config.mcpServers = config.mcpServers || {}; config.mcpServers["bo2bot"] = { serverUrl: "https://mcp.bo2bot.com/mcp?clientId=6j2zFfTKo3oX148snHjH4OQgqYVhrFSEtdTBWTq9" }; $fs.mkdirSync($path.dirname($file), { recursive: true }); $fs.writeFileSync($file, JSON.stringify(config, null, 2)); console.log("Successfully added remote bo2bot MCP!");'
+```
+
+</details>
 
 ##### Method 2: Manual Setup
 
-Alternatively, create or edit one of the following configuration files:
+Run the following commands to create the config directory and open the file for editing:
 
-```text
-~/.gemini/config/mcp_config.json
-```
-
-or:
-
-```text
-.agents/mcp_config.json
+```bash
+mkdir -p ~/.gemini/config
+open -e ~/.gemini/config/mcp_config.json
 ```
 
 Add or update the `bo2bot` server entry inside `mcpServers`:
@@ -235,16 +242,10 @@ Add or update the `bo2bot` server entry inside `mcpServers`:
 
 #### Step 2: Verify the Configuration
 
-Once you run the command or save the file, open your `mcp_config.json` file to verify it looks like this:
+Once you run the command or save the file, run the following to confirm the configuration was saved correctly:
 
-```json
-{
-  "mcpServers": {
-    "bo2bot": {
-      "serverUrl": "https://mcp.bo2bot.com/mcp?clientId=YOUR_CLIENT_ID_HERE"
-    }
-  }
-}
+```bash
+cat ~/.gemini/config/mcp_config.json
 ```
 
 After saving the configuration, open Antigravity and go to:
@@ -337,71 +338,6 @@ Once connected, you can simply ask Antigravity in plain natural language to inte
 
 ---
 
-# 🔧 MCP Configuration
-
-<details>
-<summary><b>Antigravity MCP configuration</b></summary>
-
-Antigravity supports MCP configuration through:
-
-```text
-~/.gemini/config/mcp_config.json
-```
-
-or:
-
-```text
-.agents/mcp_config.json
-```
-
-### Step 1: Run the Configuration Command
-
-Run this command in your terminal, making sure to replace `YOUR_CLIENT_ID_HERE` with your actual client ID:
-
-```bash
-node -e "const fs = require('fs'), path = require('path'), os = require('os'); const file = path.join(os.homedir(), '.gemini/config/mcp_config.json'); let config = {}; try { config = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) {}; config.mcpServers = config.mcpServers || {}; config.mcpServers['bo2bot'] = { serverUrl: 'https://mcp.bo2bot.com/mcp?clientId=YOUR_CLIENT_ID_HERE' }; fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, JSON.stringify(config, null, 2)); console.log('Successfully added remote bo2bot MCP!');"
-```
-
-### Or Manual Configuration
-
-Alternatively, open `mcp_config.json` manually and add:
-
-```json
-{
-  "mcpServers": {
-    "bo2bot": {
-      "serverUrl": "https://mcp.bo2bot.com/mcp?clientId=YOUR_CLIENT_ID_HERE"
-    }
-  }
-}
-```
-
-### Step 2: Verify the Configuration
-
-Once you run that command or save the file, open your `mcp_config.json` file to verify it looks like this:
-
-```json
-{
-  "mcpServers": {
-    "bo2bot": {
-      "serverUrl": "https://mcp.bo2bot.com/mcp?clientId=YOUR_CLIENT_ID_HERE"
-    }
-  }
-}
-```
-
-After changing the configuration:
-
-1. Save the configuration file.
-2. Restart or reload Antigravity if required.
-3. Open **Settings → Customizations → MCP**.
-4. Confirm the Bo2bot server is connected.
-5. Ask Antigravity to list your Bo2bot bots.
-
-</details>
-
----
-
 # 🧯 Troubleshooting
 
 | Symptom                              | What to check                                                                                                    |
@@ -417,56 +353,17 @@ After changing the configuration:
 
 ---
 
-# 📁 What's in This Folder
-
-```text
-
-├── README.md
-├── bo2bot.env.sample
-└── bo2bot-messaging/
-    ├── SKILL.md
-    ├── scripts/
-    └── references/
-        ├── Bo2bot_For_LLMs.md
-        ├── Bo2bot_Antigravity_Kickoff.md
-        ├── credentials-setup.md
-        └── bo2bot.env.sample
-```
-
-### Document roles
-
-| File                                       | Audience      | Purpose                                   |
-| :----------------------------------------- | :------------ | :---------------------------------------- |
-| `README.md`                                | Human         | Antigravity installation and verification |
-| `bo2bot-messaging/SKILL.md`                | Agent + Human | Bo2bot operating instructions             |
-| `references/Bo2bot_Antigravity_Kickoff.md` | Agent         | Antigravity orientation and validation    |
-| `references/Bo2bot_For_LLMs.md`            | Agent         | Authoritative Bo2bot API rules            |
-| `references/credentials-setup.md`          | Agent + Human | Credential setup                          |
-| `bo2bot.env.sample`                        | Human         | Credentials template                      |
-
----
-
-# 🔐 Security
-
-Your `BO2BOT_AUTH_KEY` is a **live secret**.
-
-| ❌ Never                               | ✅ Only commit        |
-| :------------------------------------ | :------------------- |
-| Commit a real `bo2bot.env` to Git     | `*.env.sample` files |
-| Paste `BO2BOT_AUTH_KEY` into chat     |                      |
-| Upload credentials to GitHub          |                      |
-| Share your auth key publicly          |                      |
-| Put real credentials in documentation |                      |
-
----
-
 # 🔗 Links
 
-|                        |                                                                                     |
-| :--------------------- | :---------------------------------------------------------------------------------- |
-| 📦 **Repository**      | [bo2bot-messaging/bo2bot-skills](https://github.com/bo2bot-messaging/bo2bot-skills) |
-| 🧩 **Antigravity kit** | `/antigravity`                                                                      |
-| 🌐 **Bo2bot**          | [bo2bot.com](https://bo2bot.com)                                                    |
+<div align="center">
+
+| | |
+| :-: | :-- |
+| 📦 | [**bo2bot-skills** on GitHub](https://github.com/bo2bot-messaging/bo2bot-skills) |
+| 🌐 | [**bo2bot.com**](https://bo2bot.com) |
+| 🧩 | Antigravity kit — `/antigravity` |
+
+</div>
 
 <div align="center">
 

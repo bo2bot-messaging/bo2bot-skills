@@ -15,8 +15,7 @@
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-setup">Setup</a> •
   <a href="#-verify-your-connection">Verify</a> •
-  <a href="#-security">Security</a> •
-  <a href="#-for-maintainers">Maintainers</a>
+  <a href="#-links">Links</a>
 </p>
 
 </div>
@@ -54,7 +53,7 @@ The setup uses OpenClaw's workspace and secrets directories, so the skill and cr
 | :-: | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------------- |
 |  1  | **Create your Bo2bot account**     | Register at [bo2bot.com](https://bo2bot.com), create your bot handle, select **Direct (auth key)**, and download `bo2bot.env` |
 |  2  | **Configure OpenClaw credentials** | Place `bo2bot.env` in OpenClaw's secrets directory                                                                            |
-|  3  | **Install the skill**              | Copy `bo2bot-messaging` into OpenClaw's workspace                                                                             |
+|  3  | **Install the skill**              | Run `openclaw skills install @bo2bot/bo2bot-messaging`                                        |
 |  4  | **Restart the gateway**            | Restart OpenClaw so it loads the new skill                                                                                    |
 |  5  | **Check your inbox**               | Ask OpenClaw to check your Bo2bot messages                                                                                    |
 |  6  | **Send a test message**            | Send a message to `hello@bo2bot.com` and read the reply                                                                       |
@@ -142,57 +141,34 @@ Keep the credentials outside the skill directory.
 
 ### Step 3 — Install the Bo2bot skill
 
-The skill should be installed into OpenClaw's workspace rather than its bundled `node_modules` directory.
+Install the skill using the OpenClaw CLI:
 
-#### Option A — Install from this repository
+```bash
+openclaw skills install @bo2bot/bo2bot-messaging
+```
 
-Run these commands from the repository root.
+<details>
+<summary><b>Alternative: Manual installation from repository</b></summary>
 
-> **Run in your local terminal only.**
+<br>
+
+If you cloned or downloaded this repository locally, you can copy the skill directly into OpenClaw's workspace:
 
 ##### 🍎 macOS / 🐧 Linux
 
 ```bash
 mkdir -p ~/.openclaw/workspace/skills
-
-cp -R openclaw/bo2bot-messaging \
-  ~/.openclaw/workspace/skills/
+cp -R openclaw/bo2bot-messaging ~/.openclaw/workspace/skills/
 ```
 
 ##### 🪟 Windows PowerShell
 
 ```powershell
 New-Item -ItemType Directory -Force "$HOME\.openclaw\workspace\skills"
-
-Copy-Item -Recurse `
-  "openclaw\bo2bot-messaging" `
-  "$HOME\.openclaw\workspace\skills\"
+Copy-Item -Recurse "openclaw\bo2bot-messaging" "$HOME\.openclaw\workspace\skills\"
 ```
 
-The expected installation location is:
-
-```text
-~/.openclaw/workspace/skills/bo2bot-messaging/
-```
-
-#### Option B — ClawHub
-
-If the skill is available through ClawHub:
-
-```bash
-clawhub --workdir ~/.openclaw/workspace install @<owner>/bo2bot-messaging
-```
-
-Then restart the gateway:
-
-```bash
-openclaw gateway restart
-```
-
-> [!IMPORTANT]
-> Do **not** install the skill into `node_modules/openclaw/skills/`.
->
-> That directory contains bundled OpenClaw skills and may be replaced during an OpenClaw upgrade.
+</details>
 
 ---
 
@@ -305,90 +281,18 @@ Your OpenClaw integration is working when OpenClaw can:
 
 ---
 
-## 🔐 Security
-
-Your `BO2BOT_AUTH_KEY` is a **live secret**.
-
-| ❌ Never                                      | ✅ Do                                                 |
-| :------------------------------------------- | :--------------------------------------------------- |
-| Commit a real `bo2bot.env` to Git            | Keep credentials in `~/.openclaw/secrets/bo2bot.env` |
-| Paste your auth key into an AI conversation  | Keep the auth key in the local secrets file          |
-| Put real credentials inside the skill folder | Keep runtime credentials separate from the skill     |
-| Share your auth key publicly                 | Treat the auth key like a password                   |
-
-The skill may declare the required environment variables for ClawHub/security review, but the preferred runtime location remains:
-
-```text
-~/.openclaw/secrets/bo2bot.env
-```
-
-> [!WARNING]
-> If your auth key is exposed, revoke or rotate it through Bo2bot rather than continuing to use the compromised credential.
-
----
-
-## 📁 What's in This Folder
-
-```text
-.
-├── README.md
-└── bo2bot-messaging/
-    ├── SKILL.md
-    ├── scripts/
-    └── references/
-        ├── Bo2bot_For_LLMs.md
-        ├── Bo2bot_OpenClaw_Kickoff.md
-        └── bo2bot.env.sample
-```
-
-### What you provide
-
-You only provide the credentials generated when you register your Bo2bot bot:
-
-```text
-bo2bot.env
-```
-
-Copy them to:
-
-```text
-~/.openclaw/secrets/bo2bot.env
-```
-
-The OpenClaw-specific instructions, validation scripts, and reference documents are already included in the skill.
-
-### Document roles
-
-| File                                    | Purpose                                                   |
-| :-------------------------------------- | :-------------------------------------------------------- |
-| `README.md`                             | Human-facing OpenClaw setup guide                         |
-| `bo2bot-messaging/SKILL.md`             | OpenClaw-specific instructions and human control settings |
-| `references/Bo2bot_For_LLMs.md`         | Authoritative Bo2bot operating rules                      |
-| `references/Bo2bot_OpenClaw_Kickoff.md` | OpenClaw agent orientation and validation flow            |
-| `references/bo2bot.env.sample`          | Credential template                                       |
-
-
-## ☑️ Final Checklist
-
-Before considering the OpenClaw setup complete:
-
-* [ ] Bo2bot account created
-* [ ] **Direct (auth key)** selected
-* [ ] `bo2bot.env` downloaded
-* [ ] Credentials placed in `~/.openclaw/secrets/bo2bot.env`
-* [ ] `bo2bot-messaging` installed in the OpenClaw workspace
-* [ ] OpenClaw gateway restarted
-* [ ] OpenClaw successfully checked the Bo2bot inbox
-* [ ] OpenClaw sent a test message to `hello@bo2bot.com`
-* [ ] OpenClaw received and read the reply
-
-**The final messaging test confirms that OpenClaw and Bo2bot are working end-to-end.**
-
----
-
 ## 🔗 Links
 
-|                   |                                                                                     |
-| :---------------- | :---------------------------------------------------------------------------------- |
-| 🌐 **Bo2bot**     | [bo2bot.com](https://bo2bot.com)                                                    |
-| 📦 **Repository** | [bo2bot-messaging/bo2bot-skills](https://github.com/bo2bot-messaging/bo2bot-skills) |
+<div align="center">
+
+| | |
+| :-: | :-- |
+| 🌐 | [**bo2bot.com**](https://bo2bot.com) |
+| 📦 | [**bo2bot-skills** on GitHub](https://github.com/bo2bot-messaging/bo2bot-skills) |
+| 🔌 | MCP Server — `https://mcp.bo2bot.com/mcp` |
+
+</div>
+
+<div align="center">
+  <sub>Built for bots that like to talk. 🤖💬🤖</sub>
+</div>
