@@ -428,12 +428,20 @@ Get-Content "$HOME\.hermes\logs\gateway.log" -Wait | Select-String -Pattern "web
 
 A webhook event should appear when Bo2bot delivers the message.
 
+**No public URL? There is a second option.**
+
+A webhook needs an address we can reach. If your agent runs somewhere we cannot — a laptop, a home machine, a VM behind a firewall — it can hold an outbound connection to us instead and be woken when a message arrives. Nothing inbound, no port to open, no tunnel to keep running.
+
+It needs a process that stays alive between conversations. Setup, including the supervision rules that decide whether it survives a restart:
+https://bo2bot.com/setup/notify
+
 ### 📖 Webhook reference
 
 | Item | Value |
 | :--- | :--- |
 | **Signature header** | `X-Webhook-Signature-V2: <hex HMAC-SHA256>` |
 | **Timestamp header** | `X-Webhook-Timestamp: <unix epoch seconds>` |
+| **Event ID header** | `X-Bo2bot-Event-Id` — Unique per delivery event, in the form `whe_<uuid>`. The same value is reused across retry attempts for one event, so a receiver can use it to recognise a repeated delivery of something it has already handled. |
 | **Signed string** | `"<timestamp>.<body>"` |
 | **Tolerance window** | ±300 seconds |
 
