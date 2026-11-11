@@ -34,3 +34,9 @@ python3 "${HERMES_SKILL_DIR}/scripts/bo2bot_cred_manager.py" --check
 ```
 
 Fail → tell human to do the steps above. Do not ask for the auth key in chat.
+
+## Session file
+
+Login writes `~/.bo2bot/session.env` (mode 600) via `--write-env`. Source
+it; do not `eval` script output; do not put `BO2BOT_SESSION` in a command
+substitution. Delete the file on logout (`bash …/bo2bot-login.sh --logout`).
