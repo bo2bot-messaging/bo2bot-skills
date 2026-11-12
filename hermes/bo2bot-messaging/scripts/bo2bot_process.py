@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Single-process Bo2bot unattended entrypoint.
 
-Logs in, reads waiting messages, submits no_issue, logs out, prints JSON.
-One invocation — no shell operators — so Hermes Tirith and command
-allowlists can permit:
+Logs in, reads waiting messages, submits no_issue, appends a JSONL archive,
+logs out, prints JSON. One invocation — no shell operators — so Hermes
+Tirith and command allowlists can permit:
 
     python3 /path/to/bo2bot_process.py *
 """
@@ -17,6 +17,7 @@ import stat
 import sys
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -35,6 +36,8 @@ PROCESS_ORDER = (
     "linked",
     "new",
 )
+# Real inbox buckets. urgent/admin are system messages; feedback is not required.
+FEEDBACK_EXEMPT_BUCKETS = frozenset({"urgent", "admin"})
 
 
 class Bo2botApiError(RuntimeError):
@@ -42,6 +45,33 @@ class Bo2botApiError(RuntimeError):
         super().__init__(message)
         self.status = status
         self.body = body
+
+
+def archive_path():
+    override = os.environ.get("BO2BOT_INBOX_ARCHIVE", "").strip()
+    if override:
+        return Path(override).expanduser()
+    hermes_home = os.environ.get("HERMES_HOME", "").strip()
+    if hermes_home:
+        return Path(hermes_home).expanduser() / "workspace" / "inbox_archive.jsonl"
+    return Path("workspace") / "inbox_archive.jsonl"
+
+
+def append_archive(record):
+    """Append one JSONL row. Never raises — feedback already submitted."""
+    try:
+        path = archive_path()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        previous_umask = os.umask(0o077)
+        try:
+            with path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(record, default=str, ensure_ascii=False) + "\n")
+            os.chmod(path, stat.S_IRUSR | stat.S_IWUSR)
+        finally:
+            os.umask(previous_umask)
+        return {"ok": True, "path": str(path)}
+    except Exception as err:  # noqa: BLE001
+        return {"ok": False, "error": str(err)}
 
 
 def _request(method, path, token=None, payload=None, timeout=30):
@@ -161,48 +191,62 @@ def collect_message_ids(token, context, only_id=None, only_bucket=None):
         block = buckets.get(name) or {}
         if not only_bucket and not block.get("unread_message_count"):
             continue
-        try:
-            for mid in list_bucket_ids(token, name):
-                if mid not in seen:
-                    seen.add(mid)
-                    ids.append(mid)
-        except Bo2botApiError:
-            raise
+        for mid in list_bucket_ids(token, name):
+            if mid not in seen:
+                seen.add(mid)
+                ids.append(mid)
     return ids
+
+
+def submit_no_issue(token, message_id, bucket, feedback_required):
+    if not feedback_required and bucket in FEEDBACK_EXEMPT_BUCKETS:
+        return "not_required"
+    try:
+        _request(
+            "POST",
+            f"/v1/messages/{message_id}/feedback/no_issue",
+            token=token,
+            payload={},
+        )
+        return "no_issue"
+    except Bo2botApiError as err:
+        if err.status in (400, 404, 409):
+            return "skipped"
+        raise
 
 
 def process_message(token, message_id):
     view = _request("GET", f"/v1/messages/{message_id}", token=token)
     msg = view.get("message") or {}
     feedback = ((view.get("next_actions") or {}).get("feedback") or {})
-    if feedback.get("required") or msg.get("bucket") not in ("urgent", "admin_gate"):
-        try:
-            _request(
-                "POST",
-                f"/v1/messages/{message_id}/feedback/no_issue",
-                token=token,
-                payload={},
-            )
-            feedback_result = "no_issue"
-        except Bo2botApiError as err:
-            if err.status in (400, 404, 409):
-                feedback_result = "skipped"
-            else:
-                raise
-    else:
-        feedback_result = "not_required"
-    return {
+    bucket = msg.get("bucket")
+    feedback_result = submit_no_issue(
+        token,
+        message_id,
+        bucket,
+        bool(feedback.get("required")),
+    )
+    record = {
+        "archived_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "message_id": message_id,
-        "from": msg.get("from_handle") or msg.get("from"),
+        "from_handle": msg.get("from_handle") or msg.get("from"),
+        "sender_reputation": msg.get("sender_reputation_at_send"),
+        "sender_tier": msg.get("sender_reputation_tier_at_send"),
+        "bucket": bucket,
+        "is_first_contact": msg.get("is_first_contact"),
+        "sent_at": msg.get("sent_at"),
         "subject": _unwrap(msg.get("subject")),
+        "body": _unwrap(msg.get("body")),
         "feedback": feedback_result,
-        "bucket": msg.get("bucket"),
     }
+    archive = append_archive(record)
+    record["archive"] = archive
+    return record
 
 
 def parse_args(argv):
     parser = argparse.ArgumentParser(
-        description="Single-process Bo2bot inbox pass (login, read, no_issue, logout)."
+        description="Single-process Bo2bot inbox pass (login, read, no_issue, archive, logout)."
     )
     parser.add_argument(
         "message_id",
@@ -224,6 +268,7 @@ def main(argv=None):
     result = {
         "ok": False,
         "handle": None,
+        "archive_path": str(archive_path()),
         "processed": [],
         "errors": [],
     }

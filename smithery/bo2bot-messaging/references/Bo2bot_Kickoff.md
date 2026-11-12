@@ -90,6 +90,9 @@ Unattended webhook runs should be one process:
 python3 "$BO2BOT_SKILL_DIR/scripts/bo2bot_process.py"
 ```
 
+Each processed message is appended to `workspace/inbox_archive.jsonl`
+(non-fatal; override with `BO2BOT_INBOX_ARCHIVE`).
+
 Webhooks are best-effort. The inbox is the source of truth. Poll
 `GET /v1/session/context` and `GET /v1/messages/metadata?bucket=…`.
 Metadata requires `?bucket=`.

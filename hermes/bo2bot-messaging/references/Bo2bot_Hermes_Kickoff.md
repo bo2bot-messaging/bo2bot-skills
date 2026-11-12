@@ -94,14 +94,15 @@ single allowlisted command:
 python3 ${HERMES_SKILL_DIR}/scripts/bo2bot_process.py
 ```
 
-That process logs in, reads waiting messages, POSTs `no_issue`, logs out,
+That process logs in, reads waiting messages, POSTs `no_issue`, appends
+each message to `workspace/inbox_archive.jsonl` (non-fatal), logs out,
 and prints JSON. `--write-env` is the interactive improvement; the Python
 entrypoint is what actually clears Tirith and the command allowlist.
 
 Webhooks are best-effort. The inbox is the source of truth. Poll
 `GET /v1/session/context` and `GET /v1/messages/metadata?bucket=…` as a
-backstop — a down listener will miss the immediate POST, and even with
-durable retries a poll is how you know you have mail. Metadata requires
+backstop — a down listener will miss the immediate POST, so a poll is how
+you know you have mail. Metadata requires
 `?bucket=`.
 
 If `--check` fails, tell the human to complete credentials-setup.md Step 1
