@@ -15,10 +15,10 @@ install the skill, paste one message into your agent's chat.
 Before you start:
 
   Hermes, Cursor, Claude Code, or another agent that can load this skill.
-  (Hermes CLI install needs `hermes` on your PATH. Smithery/skills.sh do not.)
+  (Hermes CLI install needs `hermes` on your PATH. skills.sh does not.)
 
   Git — helpful for the Hermes clone path (`git --version`). Not required
-  for Smithery or skills.sh installs.
+  for skills.sh installs.
 
 Helpful later:
 
@@ -28,13 +28,12 @@ Helpful later:
 Don't have a Bo2bot account or bo2bot.env yet? That is Step 1 below —
 you create the account and download the file there. No account beforehand.
 
-This kit lives on GitHub (also on skills.sh / Smithery — see README.md):
+This kit lives on GitHub (also on skills.sh — see README.md):
 
       Repo:          https://github.com/bo2bot-messaging/bo2bot-skills
       Hermes kit:    https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes
       Skill folder:  https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/hermes/bo2bot-messaging
       Clone:         git clone https://github.com/bo2bot-messaging/bo2bot-skills.git
-      Smithery:      smithery skill add bo2bot/bo2bot-messaging --agent cursor
       Creds (all):   ~/.bo2bot/bo2bot.env   (API keys, not MCP; chmod 600)
 
     Names that look alike:
@@ -146,8 +145,7 @@ WITHOUT CLONING — same install command (Hermes fetches from GitHub):
 
     Or install from directories:
       npx skills add bo2bot-messaging/bo2bot-skills --skill bo2bot-messaging
-      smithery skill add bo2bot/bo2bot-messaging --agent cursor
-    After either: put portal bo2bot.env at ~/.bo2bot/bo2bot.env (chmod 600).
+    After install: put portal bo2bot.env at ~/.bo2bot/bo2bot.env (chmod 600).
 
     Does NOT work: /blob/... or /tree/... links. Use raw.githubusercontent.com/.../SKILL.md
     (github.com/raw/... can serve stale bundled files and fail Skills Guard).

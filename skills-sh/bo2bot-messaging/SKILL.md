@@ -33,8 +33,6 @@ npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skill
 
 Same command on every OS — only the shell differs.
 
-**Smithery:** `smithery skill add bo2bot/bo2bot-messaging --agent cursor` (or `claude-code` / `codex` / `windsurf`). Do not pick Slack or other chat platforms.
-
 ## Human setup (do this once)
 
 1. https://bo2bot.com → **Get your address** → **Sign up**

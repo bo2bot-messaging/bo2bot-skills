@@ -173,16 +173,13 @@ hermes skills install "https://raw.githubusercontent.com/bo2bot-messaging/bo2bot
 
 </details>
 
-#### Option B — skills.sh or Smithery
+#### Option B — skills.sh
 
-These are separate packages from the Hermes kit.
+This is a separate package from the Hermes kit.
 
 ```bash
 # skills.sh
 npx skills add https://github.com/bo2bot-messaging/bo2bot-skills/tree/main/skills-sh/bo2bot-messaging
-
-# Smithery
-smithery skill add bo2bot/bo2bot-messaging --agent cursor
 ```
 
 <details>
